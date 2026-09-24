@@ -1,0 +1,25 @@
+import { test, expect } from '@playwright/test';
+test('Portuguese persists and switching languages preserves imported results and filters', async ({ page }) => {
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/');await page.getByRole('button',{name:'Português',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Reúna seus dados'})).toBeVisible();
+ await expect(page.locator('html')).toHaveAttribute('lang','pt-BR');
+ await page.reload();await expect(page.getByRole('heading',{name:'Reúna seus dados'})).toBeVisible();
+ await page.getByLabel('ads CSV file').setInputFiles({name:'ads.csv',mimeType:'text/csv',buffer:Buffer.from('Campaign,Spend\nSearch,100')});
+ await page.getByLabel('crm CSV file').setInputFiles({name:'crm.csv',mimeType:'text/csv',buffer:Buffer.from('Campaign,Stage,Amount\nSearch,Won,500\nSearch,Proposal,200')});
+ await page.getByRole('button',{name:'Analisar dados',exact:true}).click();
+ await expect(page.locator('.metric-value').first()).toContainText('100');
+ await expect(page.locator('.metric-3')).toContainText('Valor das oportunidades em aberto');
+ await expect(page.locator('.metric-value').nth(3)).toContainText('200');
+ await page.getByLabel('Filtrar decisão').selectOption('Gather data');
+ await expect(page.locator('.decision-badge')).toHaveText('Coletar dados');
+ await page.getByRole('button',{name:'EN',exact:true}).click();
+ await expect(page.getByLabel('Filter decision')).toHaveValue('Gather data');
+ await expect(page.locator('.metric-value').first()).toHaveText('$100');
+ await expect(page.locator('.campaign-panel tbody')).toContainText('Search');
+ await page.getByRole('button',{name:'Português',exact:true}).click();
+ await page.setViewportSize({width:390,height:844});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.screenshot({path:'test-results/portuguese-mobile.png',fullPage:true});
+ expect(errors).toEqual([]);
+});

@@ -1,0 +1,361 @@
+Close_Date,Lead_Source_Campaign,Lead_Status,Revenue_Generated
+08-03-2026,Retargeting_CartAbandon,Closed Won,5052.00
+09-03-2026,Prospecting Lookalike 1%,Closed Won,6352.00
+10-03-2026,Always-On Awareness NA,Closed Won,7652.00
+11-03-2026,Summer Bundle Promo,Closed Lost,0.00
+12-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+13-03-2026,Q3 Brand Search US,Closed Won,11552.00
+14-03-2026,Retargeting_CartAbandon,Closed Won,12852.00
+15-03-2026,Prospecting Lookalike 1%,Closed Won,14152.00
+16-03-2026,Always-On Awareness NA,Closed Won,15452.00
+17-03-2026,Summer Bundle Promo,Closed Lost,0.00
+18-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+19-03-2026,Q3 Brand Search US,Closed Won,19352.00
+20-03-2026,Retargeting_CartAbandon,Closed Won,20652.00
+21-03-2026,Prospecting Lookalike 1%,Closed Won,21952.00
+22-03-2026,Always-On Awareness NA,Closed Won,23252.00
+23-03-2026,Summer Bundle Promo,Closed Lost,0.00
+24-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+25-03-2026,Q3 Brand Search US,Closed Won,27152.00
+26-03-2026,Retargeting_CartAbandon,Closed Won,28452.00
+27-03-2026,Prospecting Lookalike 1%,Closed Won,29752.00
+28-03-2026,Always-On Awareness NA,Closed Won,31052.00
+29-03-2026,Summer Bundle Promo,Closed Lost,0.00
+30-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+31-03-2026,Q3 Brand Search US,Closed Won,34952.00
+01-04-2026,Retargeting_CartAbandon,Closed Won,36252.00
+02-04-2026,Prospecting Lookalike 1%,Closed Won,37552.00
+03-04-2026,Always-On Awareness NA,Closed Won,38852.00
+04-04-2026,Summer Bundle Promo,Closed Lost,0.00
+05-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+06-04-2026,Q3 Brand Search US,Closed Won,42752.00
+07-04-2026,Retargeting_CartAbandon,Closed Won,44052.00
+08-04-2026,Prospecting Lookalike 1%,Closed Won,45352.00
+09-04-2026,Always-On Awareness NA,Closed Won,46652.00
+10-04-2026,Summer Bundle Promo,Closed Lost,0.00
+11-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+12-04-2026,Q3 Brand Search US,Closed Won,8552.00
+13-04-2026,Retargeting_CartAbandon,Closed Won,9852.00
+14-04-2026,Prospecting Lookalike 1%,Closed Won,11152.00
+15-04-2026,Always-On Awareness NA,Closed Won,12452.00
+16-04-2026,Summer Bundle Promo,Closed Lost,0.00
+17-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+18-04-2026,Q3 Brand Search US,Closed Won,16352.00
+19-04-2026,Retargeting_CartAbandon,Closed Won,17652.00
+20-04-2026,Prospecting Lookalike 1%,Closed Won,18952.00
+21-04-2026,Always-On Awareness NA,Closed Won,20252.00
+22-04-2026,Summer Bundle Promo,Closed Lost,0.00
+23-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+24-04-2026,Q3 Brand Search US,Closed Won,24152.00
+25-04-2026,Retargeting_CartAbandon,Closed Won,25452.00
+26-04-2026,Prospecting Lookalike 1%,Closed Won,26752.00
+27-04-2026,Always-On Awareness NA,Closed Won,28052.00
+28-04-2026,Summer Bundle Promo,Closed Lost,0.00
+29-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+30-04-2026,Q3 Brand Search US,Closed Won,31952.00
+01-05-2026,Retargeting_CartAbandon,Closed Won,33252.00
+02-05-2026,Prospecting Lookalike 1%,Closed Won,34552.00
+03-05-2026,Always-On Awareness NA,Closed Won,35852.00
+04-05-2026,Summer Bundle Promo,Closed Lost,0.00
+05-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+06-05-2026,Q3 Brand Search US,Closed Won,39752.00
+07-05-2026,Retargeting_CartAbandon,Closed Won,41052.00
+08-05-2026,Prospecting Lookalike 1%,Closed Won,42352.00
+09-05-2026,Always-On Awareness NA,Closed Won,43652.00
+10-05-2026,Summer Bundle Promo,Closed Lost,0.00
+11-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+12-05-2026,Q3 Brand Search US,Closed Won,5552.00
+13-05-2026,Retargeting_CartAbandon,Closed Won,6852.00
+14-05-2026,Prospecting Lookalike 1%,Closed Won,8152.00
+15-05-2026,Always-On Awareness NA,Closed Won,9452.00
+16-05-2026,Summer Bundle Promo,Closed Lost,0.00
+17-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+18-05-2026,Q3 Brand Search US,Closed Won,13352.00
+19-05-2026,Retargeting_CartAbandon,Closed Won,14652.00
+20-05-2026,Prospecting Lookalike 1%,Closed Won,15952.00
+21-05-2026,Always-On Awareness NA,Closed Won,17252.00
+22-05-2026,Summer Bundle Promo,Closed Lost,0.00
+23-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+24-05-2026,Q3 Brand Search US,Closed Won,21152.00
+25-05-2026,Retargeting_CartAbandon,Closed Won,22452.00
+26-05-2026,Prospecting Lookalike 1%,Closed Won,23752.00
+27-05-2026,Always-On Awareness NA,Closed Won,25052.00
+28-05-2026,Summer Bundle Promo,Closed Lost,0.00
+29-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+30-05-2026,Q3 Brand Search US,Closed Won,28952.00
+31-05-2026,Retargeting_CartAbandon,Closed Won,30252.00
+01-06-2026,Prospecting Lookalike 1%,Closed Won,31552.00
+02-06-2026,Always-On Awareness NA,Closed Won,32852.00
+03-06-2026,Summer Bundle Promo,Closed Lost,0.00
+04-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+05-06-2026,Q3 Brand Search US,Closed Won,36752.00
+06-06-2026,Retargeting_CartAbandon,Closed Won,38052.00
+07-06-2026,Prospecting Lookalike 1%,Closed Won,39352.00
+08-06-2026,Always-On Awareness NA,Closed Won,40652.00
+09-06-2026,Summer Bundle Promo,Closed Lost,0.00
+10-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+11-06-2026,Q3 Brand Search US,Closed Won,44552.00
+12-06-2026,Retargeting_CartAbandon,Closed Won,45852.00
+13-06-2026,Prospecting Lookalike 1%,Closed Won,5152.00
+14-06-2026,Always-On Awareness NA,Closed Won,6452.00
+15-06-2026,Summer Bundle Promo,Closed Lost,0.00
+16-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+17-06-2026,Q3 Brand Search US,Closed Won,10352.00
+18-06-2026,Retargeting_CartAbandon,Closed Won,11652.00
+19-06-2026,Prospecting Lookalike 1%,Closed Won,12952.00
+20-06-2026,Always-On Awareness NA,Closed Won,14252.00
+21-06-2026,Summer Bundle Promo,Closed Lost,0.00
+22-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+23-06-2026,Q3 Brand Search US,Closed Won,18152.00
+24-06-2026,Retargeting_CartAbandon,Closed Won,19452.00
+25-06-2026,Prospecting Lookalike 1%,Closed Won,20752.00
+08-03-2026,Always-On Awareness NA,Closed Won,22052.00
+09-03-2026,Summer Bundle Promo,Closed Lost,0.00
+10-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+11-03-2026,Q3 Brand Search US,Closed Won,25952.00
+12-03-2026,Retargeting_CartAbandon,Closed Won,27252.00
+13-03-2026,Prospecting Lookalike 1%,Closed Won,28552.00
+14-03-2026,Always-On Awareness NA,Closed Won,29852.00
+15-03-2026,Summer Bundle Promo,Closed Lost,0.00
+16-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+17-03-2026,Q3 Brand Search US,Closed Won,33752.00
+18-03-2026,Retargeting_CartAbandon,Closed Won,35052.00
+19-03-2026,Prospecting Lookalike 1%,Closed Won,36352.00
+20-03-2026,Always-On Awareness NA,Closed Won,37652.00
+21-03-2026,Summer Bundle Promo,Closed Lost,0.00
+22-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+23-03-2026,Q3 Brand Search US,Closed Won,41552.00
+24-03-2026,Retargeting_CartAbandon,Closed Won,42852.00
+25-03-2026,Prospecting Lookalike 1%,Closed Won,44152.00
+26-03-2026,Always-On Awareness NA,Closed Won,45452.00
+27-03-2026,Summer Bundle Promo,Closed Lost,0.00
+28-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+29-03-2026,Q3 Brand Search US,Closed Won,7352.00
+30-03-2026,Retargeting_CartAbandon,Closed Won,8652.00
+31-03-2026,Prospecting Lookalike 1%,Closed Won,9952.00
+01-04-2026,Always-On Awareness NA,Closed Won,11252.00
+02-04-2026,Summer Bundle Promo,Closed Lost,0.00
+03-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+04-04-2026,Q3 Brand Search US,Closed Won,15152.00
+05-04-2026,Retargeting_CartAbandon,Closed Won,16452.00
+06-04-2026,Prospecting Lookalike 1%,Closed Won,17752.00
+07-04-2026,Always-On Awareness NA,Closed Won,19052.00
+08-04-2026,Summer Bundle Promo,Closed Lost,0.00
+09-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+10-04-2026,Q3 Brand Search US,Closed Won,22952.00
+11-04-2026,Retargeting_CartAbandon,Closed Won,24252.00
+12-04-2026,Prospecting Lookalike 1%,Closed Won,25552.00
+13-04-2026,Always-On Awareness NA,Closed Won,26852.00
+14-04-2026,Summer Bundle Promo,Closed Lost,0.00
+15-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+16-04-2026,Q3 Brand Search US,Closed Won,30752.00
+17-04-2026,Retargeting_CartAbandon,Closed Won,32052.00
+18-04-2026,Prospecting Lookalike 1%,Closed Won,33352.00
+19-04-2026,Always-On Awareness NA,Closed Won,34652.00
+20-04-2026,Summer Bundle Promo,Closed Lost,0.00
+21-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+22-04-2026,Q3 Brand Search US,Closed Won,38552.00
+23-04-2026,Retargeting_CartAbandon,Closed Won,39852.00
+24-04-2026,Prospecting Lookalike 1%,Closed Won,41152.00
+25-04-2026,Always-On Awareness NA,Closed Won,42452.00
+26-04-2026,Summer Bundle Promo,Closed Lost,0.00
+27-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+28-04-2026,Q3 Brand Search US,Closed Won,46352.00
+29-04-2026,Retargeting_CartAbandon,Closed Won,5652.00
+30-04-2026,Prospecting Lookalike 1%,Closed Won,6952.00
+01-05-2026,Always-On Awareness NA,Closed Won,8252.00
+02-05-2026,Summer Bundle Promo,Closed Lost,0.00
+03-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+04-05-2026,Q3 Brand Search US,Closed Won,12152.00
+05-05-2026,Retargeting_CartAbandon,Closed Won,13452.00
+06-05-2026,Prospecting Lookalike 1%,Closed Won,14752.00
+07-05-2026,Always-On Awareness NA,Closed Won,16052.00
+08-05-2026,Summer Bundle Promo,Closed Lost,0.00
+09-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+10-05-2026,Q3 Brand Search US,Closed Won,19952.00
+11-05-2026,Retargeting_CartAbandon,Closed Won,21252.00
+12-05-2026,Prospecting Lookalike 1%,Closed Won,22552.00
+13-05-2026,Always-On Awareness NA,Closed Won,23852.00
+14-05-2026,Summer Bundle Promo,Closed Lost,0.00
+15-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+16-05-2026,Q3 Brand Search US,Closed Won,27752.00
+17-05-2026,Retargeting_CartAbandon,Closed Won,29052.00
+18-05-2026,Prospecting Lookalike 1%,Closed Won,30352.00
+19-05-2026,Always-On Awareness NA,Closed Won,31652.00
+20-05-2026,Summer Bundle Promo,Closed Lost,0.00
+21-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+22-05-2026,Q3 Brand Search US,Closed Won,35552.00
+23-05-2026,Retargeting_CartAbandon,Closed Won,36852.00
+24-05-2026,Prospecting Lookalike 1%,Closed Won,38152.00
+25-05-2026,Always-On Awareness NA,Closed Won,39452.00
+26-05-2026,Summer Bundle Promo,Closed Lost,0.00
+27-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+28-05-2026,Q3 Brand Search US,Closed Won,43352.00
+29-05-2026,Retargeting_CartAbandon,Closed Won,44652.00
+30-05-2026,Prospecting Lookalike 1%,Closed Won,45952.00
+31-05-2026,Always-On Awareness NA,Closed Won,5252.00
+01-06-2026,Summer Bundle Promo,Closed Lost,0.00
+02-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+03-06-2026,Q3 Brand Search US,Closed Won,9152.00
+04-06-2026,Retargeting_CartAbandon,Closed Won,10452.00
+05-06-2026,Prospecting Lookalike 1%,Closed Won,11752.00
+06-06-2026,Always-On Awareness NA,Closed Won,13052.00
+07-06-2026,Summer Bundle Promo,Closed Lost,0.00
+08-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+09-06-2026,Q3 Brand Search US,Closed Won,16952.00
+10-06-2026,Retargeting_CartAbandon,Closed Won,18252.00
+11-06-2026,Prospecting Lookalike 1%,Closed Won,19552.00
+12-06-2026,Always-On Awareness NA,Closed Won,20852.00
+13-06-2026,Summer Bundle Promo,Closed Lost,0.00
+14-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+15-06-2026,Q3 Brand Search US,Closed Won,24752.00
+16-06-2026,Retargeting_CartAbandon,Closed Won,26052.00
+17-06-2026,Prospecting Lookalike 1%,Closed Won,27352.00
+18-06-2026,Always-On Awareness NA,Closed Won,28652.00
+19-06-2026,Summer Bundle Promo,Closed Lost,0.00
+20-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+21-06-2026,Q3 Brand Search US,Closed Won,32552.00
+22-06-2026,Retargeting_CartAbandon,Closed Won,33852.00
+23-06-2026,Prospecting Lookalike 1%,Closed Won,35152.00
+24-06-2026,Always-On Awareness NA,Closed Won,36452.00
+25-06-2026,Summer Bundle Promo,Closed Lost,0.00
+08-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+09-03-2026,Q3 Brand Search US,Closed Won,40352.00
+10-03-2026,Retargeting_CartAbandon,Closed Won,41652.00
+11-03-2026,Prospecting Lookalike 1%,Closed Won,42952.00
+12-03-2026,Always-On Awareness NA,Closed Won,44252.00
+13-03-2026,Summer Bundle Promo,Closed Lost,0.00
+14-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+15-03-2026,Q3 Brand Search US,Closed Won,6152.00
+16-03-2026,Retargeting_CartAbandon,Closed Won,7452.00
+17-03-2026,Prospecting Lookalike 1%,Closed Won,8752.00
+18-03-2026,Always-On Awareness NA,Closed Won,10052.00
+19-03-2026,Summer Bundle Promo,Closed Lost,0.00
+20-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+21-03-2026,Q3 Brand Search US,Closed Won,13952.00
+22-03-2026,Retargeting_CartAbandon,Closed Won,15252.00
+23-03-2026,Prospecting Lookalike 1%,Closed Won,16552.00
+24-03-2026,Always-On Awareness NA,Closed Won,17852.00
+25-03-2026,Summer Bundle Promo,Closed Lost,0.00
+26-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+27-03-2026,Q3 Brand Search US,Closed Won,21752.00
+28-03-2026,Retargeting_CartAbandon,Closed Won,23052.00
+29-03-2026,Prospecting Lookalike 1%,Closed Won,24352.00
+30-03-2026,Always-On Awareness NA,Closed Won,25652.00
+31-03-2026,Summer Bundle Promo,Closed Lost,0.00
+01-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+02-04-2026,Q3 Brand Search US,Closed Won,29552.00
+03-04-2026,Retargeting_CartAbandon,Closed Won,30852.00
+04-04-2026,Prospecting Lookalike 1%,Closed Won,32152.00
+05-04-2026,Always-On Awareness NA,Closed Won,33452.00
+06-04-2026,Summer Bundle Promo,Closed Lost,0.00
+07-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+08-04-2026,Q3 Brand Search US,Closed Won,37352.00
+09-04-2026,Retargeting_CartAbandon,Closed Won,38652.00
+10-04-2026,Prospecting Lookalike 1%,Closed Won,39952.00
+11-04-2026,Always-On Awareness NA,Closed Won,41252.00
+12-04-2026,Summer Bundle Promo,Closed Lost,0.00
+13-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+14-04-2026,Q3 Brand Search US,Closed Won,45152.00
+15-04-2026,Retargeting_CartAbandon,Closed Won,46452.00
+16-04-2026,Prospecting Lookalike 1%,Closed Won,5752.00
+17-04-2026,Always-On Awareness NA,Closed Won,7052.00
+18-04-2026,Summer Bundle Promo,Closed Lost,0.00
+19-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+20-04-2026,Q3 Brand Search US,Closed Won,10952.00
+21-04-2026,Retargeting_CartAbandon,Closed Won,12252.00
+22-04-2026,Prospecting Lookalike 1%,Closed Won,13552.00
+23-04-2026,Always-On Awareness NA,Closed Won,14852.00
+24-04-2026,Summer Bundle Promo,Closed Lost,0.00
+25-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+26-04-2026,Q3 Brand Search US,Closed Won,18752.00
+27-04-2026,Retargeting_CartAbandon,Closed Won,20052.00
+28-04-2026,Prospecting Lookalike 1%,Closed Won,21352.00
+29-04-2026,Always-On Awareness NA,Closed Won,22652.00
+30-04-2026,Summer Bundle Promo,Closed Lost,0.00
+01-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+02-05-2026,Q3 Brand Search US,Closed Won,26552.00
+03-05-2026,Retargeting_CartAbandon,Closed Won,27852.00
+04-05-2026,Prospecting Lookalike 1%,Closed Won,29152.00
+05-05-2026,Always-On Awareness NA,Closed Won,30452.00
+06-05-2026,Summer Bundle Promo,Closed Lost,0.00
+07-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+08-05-2026,Q3 Brand Search US,Closed Won,34352.00
+09-05-2026,Retargeting_CartAbandon,Closed Won,35652.00
+10-05-2026,Prospecting Lookalike 1%,Closed Won,36952.00
+11-05-2026,Always-On Awareness NA,Closed Won,38252.00
+12-05-2026,Summer Bundle Promo,Closed Lost,0.00
+13-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+14-05-2026,Q3 Brand Search US,Closed Won,42152.00
+15-05-2026,Retargeting_CartAbandon,Closed Won,43452.00
+16-05-2026,Prospecting Lookalike 1%,Closed Won,44752.00
+17-05-2026,Always-On Awareness NA,Closed Won,46052.00
+18-05-2026,Summer Bundle Promo,Closed Lost,0.00
+19-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+20-05-2026,Q3 Brand Search US,Closed Won,7952.00
+21-05-2026,Retargeting_CartAbandon,Closed Won,9252.00
+22-05-2026,Prospecting Lookalike 1%,Closed Won,10552.00
+23-05-2026,Always-On Awareness NA,Closed Won,11852.00
+24-05-2026,Summer Bundle Promo,Closed Lost,0.00
+25-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+26-05-2026,Q3 Brand Search US,Closed Won,15752.00
+27-05-2026,Retargeting_CartAbandon,Closed Won,17052.00
+28-05-2026,Prospecting Lookalike 1%,Closed Won,18352.00
+29-05-2026,Always-On Awareness NA,Closed Won,19652.00
+30-05-2026,Summer Bundle Promo,Closed Lost,0.00
+31-05-2026,ABM Enterprise LinkedIn,Qualified,0.00
+01-06-2026,Q3 Brand Search US,Closed Won,23552.00
+02-06-2026,Retargeting_CartAbandon,Closed Won,24852.00
+03-06-2026,Prospecting Lookalike 1%,Closed Won,26152.00
+04-06-2026,Always-On Awareness NA,Closed Won,27452.00
+05-06-2026,Summer Bundle Promo,Closed Lost,0.00
+06-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+07-06-2026,Q3 Brand Search US,Closed Won,31352.00
+08-06-2026,Retargeting_CartAbandon,Closed Won,32652.00
+09-06-2026,Prospecting Lookalike 1%,Closed Won,33952.00
+10-06-2026,Always-On Awareness NA,Closed Won,35252.00
+11-06-2026,Summer Bundle Promo,Closed Lost,0.00
+12-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+13-06-2026,Q3 Brand Search US,Closed Won,39152.00
+14-06-2026,Retargeting_CartAbandon,Closed Won,40452.00
+15-06-2026,Prospecting Lookalike 1%,Closed Won,41752.00
+16-06-2026,Always-On Awareness NA,Closed Won,43052.00
+17-06-2026,Summer Bundle Promo,Closed Lost,0.00
+18-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+19-06-2026,Q3 Brand Search US,Closed Won,4952.00
+20-06-2026,Retargeting_CartAbandon,Closed Won,6252.00
+21-06-2026,Prospecting Lookalike 1%,Closed Won,7552.00
+22-06-2026,Always-On Awareness NA,Closed Won,8852.00
+23-06-2026,Summer Bundle Promo,Closed Lost,0.00
+24-06-2026,ABM Enterprise LinkedIn,Qualified,0.00
+25-06-2026,Q3 Brand Search US,Closed Won,12752.00
+08-03-2026,Retargeting_CartAbandon,Closed Won,14052.00
+09-03-2026,Prospecting Lookalike 1%,Closed Won,15352.00
+10-03-2026,Always-On Awareness NA,Closed Won,16652.00
+11-03-2026,Summer Bundle Promo,Closed Lost,0.00
+12-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+13-03-2026,Q3 Brand Search US,Closed Won,20552.00
+14-03-2026,Retargeting_CartAbandon,Closed Won,21852.00
+15-03-2026,Prospecting Lookalike 1%,Closed Won,23152.00
+16-03-2026,Always-On Awareness NA,Closed Won,24452.00
+17-03-2026,Summer Bundle Promo,Closed Lost,0.00
+18-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+19-03-2026,Q3 Brand Search US,Closed Won,28352.00
+20-03-2026,Retargeting_CartAbandon,Closed Won,29652.00
+21-03-2026,Prospecting Lookalike 1%,Closed Won,30952.00
+22-03-2026,Always-On Awareness NA,Closed Won,32252.00
+23-03-2026,Summer Bundle Promo,Closed Lost,0.00
+24-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+25-03-2026,Q3 Brand Search US,Closed Won,36152.00
+26-03-2026,Retargeting_CartAbandon,Closed Won,37452.00
+27-03-2026,Prospecting Lookalike 1%,Closed Won,38752.00
+28-03-2026,Always-On Awareness NA,Closed Won,40052.00
+29-03-2026,Summer Bundle Promo,Closed Lost,0.00
+30-03-2026,ABM Enterprise LinkedIn,Qualified,0.00
+31-03-2026,Q3 Brand Search US,Closed Won,43952.00
+01-04-2026,Retargeting_CartAbandon,Closed Won,45252.00
+02-04-2026,Prospecting Lookalike 1%,Closed Won,46552.00
+03-04-2026,Always-On Awareness NA,Closed Won,5852.00
+04-04-2026,Summer Bundle Promo,Closed Lost,0.00
+05-04-2026,ABM Enterprise LinkedIn,Qualified,0.00
+06-04-2026,Q3 Brand Search US,Closed Won,9752.00

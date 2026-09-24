@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+test-results/
+playwright-report/
+.sites-runtime/
+dist/
+.vinext/
+.wrangler/
+
+# Local portfolio working copy and agent tooling are not app source.
+portfolio/
+.agents/
+CLAUDE.md
+skills-lock.json

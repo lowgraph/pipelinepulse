@@ -1,0 +1,341 @@
+Date,Campaign_Name,Platform,Impressions,Clicks,Total_Spend
+03/01/2026,Q3_Brand_Search_US,Meta,12156,52,62.40
+03/02/2026,Retargeting - Cart Abandoners,Google Ads,12947,69,106.95
+03/03/2026,Prospecting_Lookalike_1pct,Google Ads,13738,86,163.40
+03/04/2026,Always On - Awareness (NA),Meta,,103,231.75
+03/05/2026,Promo: Summer Bundle 2026,Google Ads,15320,120,312.00
+03/06/2026,LinkedIn ABM - Enterprise,LinkedIn,16111,137,404.15
+03/07/2026,Q3_Brand_Search_US,Meta,16902,154,508.20
+03/08/2026,Retargeting - Cart Abandoners,Google Ads,17693,171,205.20
+03/09/2026,Prospecting_Lookalike_1pct,Google Ads,18484,188,291.40
+03/10/2026,Always On - Awareness (NA),Meta,19275,205,389.50
+03/11/2026,Promo: Summer Bundle 2026,Google Ads,20066,222,499.50
+03/12/2026,LinkedIn ABM - Enterprise,LinkedIn,20857,,621.40
+03/13/2026,Q3_Brand_Search_US,Meta,21648,256,755.20
+03/14/2026,Retargeting - Cart Abandoners,Google Ads,22439,273,900.90
+03/15/2026,Prospecting_Lookalike_1pct,Google Ads,23230,290,
+03/16/2026,Always On - Awareness (NA),Meta,24021,307,475.85
+03/17/2026,Promo: Summer Bundle 2026,Google Ads,24812,324,615.60
+03/18/2026,LinkedIn ABM - Enterprise,LinkedIn,25603,341,767.25
+03/19/2026,Q3_Brand_Search_US,Meta,26394,358,930.80
+03/20/2026,Retargeting - Cart Abandoners,Google Ads,27185,375,1106.25
+03/21/2026,Prospecting_Lookalike_1pct,Google Ads,27976,392,1293.60
+03/22/2026,Always On - Awareness (NA),Meta,28767,409,490.80
+03/23/2026,Promo: Summer Bundle 2026,Google Ads,29558,426,660.30
+03/24/2026,LinkedIn ABM - Enterprise,LinkedIn,30349,443,841.70
+03/25/2026,Q3_Brand_Search_US,Meta,31140,40,90.00
+03/26/2026,Retargeting - Cart Abandoners,Google Ads,31931,57,148.20
+03/27/2026,Prospecting_Lookalike_1pct,Google Ads,32722,74,218.30
+03/28/2026,Always On - Awareness (NA),Meta,33513,91,300.30
+03/29/2026,Promo: Summer Bundle 2026,Google Ads,34304,108,129.60
+03/30/2026,LinkedIn ABM - Enterprise,LinkedIn,35095,125,193.75
+03/31/2026,Q3_Brand_Search_US,Meta,35886,142,269.80
+04/01/2026,Retargeting - Cart Abandoners,Google Ads,36677,159,357.75
+04/02/2026,Prospecting_Lookalike_1pct,Google Ads,37468,176,457.60
+04/03/2026,Always On - Awareness (NA),Meta,38259,193,569.35
+04/04/2026,Promo: Summer Bundle 2026,Google Ads,39050,210,693.00
+04/05/2026,LinkedIn ABM - Enterprise,LinkedIn,39841,227,272.40
+04/06/2026,Q3_Brand_Search_US,Meta,40632,244,378.20
+04/07/2026,Retargeting - Cart Abandoners,Google Ads,41423,261,495.90
+04/08/2026,Prospecting_Lookalike_1pct,Google Ads,42214,278,625.50
+04/09/2026,Always On - Awareness (NA),Meta,43005,295,767.00
+04/10/2026,Promo: Summer Bundle 2026,Google Ads,43796,312,920.40
+04/11/2026,LinkedIn ABM - Enterprise,LinkedIn,44587,329,1085.70
+04/12/2026,Q3_Brand_Search_US,Meta,45378,346,415.20
+04/13/2026,Retargeting - Cart Abandoners,Google Ads,46169,363,562.65
+04/14/2026,Prospecting_Lookalike_1pct,Google Ads,46960,380,722.00
+04/15/2026,Always On - Awareness (NA),Meta,47751,397,893.25
+04/16/2026,Promo: Summer Bundle 2026,Google Ads,48542,414,1076.40
+04/17/2026,LinkedIn ABM - Enterprise,LinkedIn,49333,431,1271.45
+04/18/2026,Q3_Brand_Search_US,Meta,50124,448,1478.40
+04/19/2026,Retargeting - Cart Abandoners,Google Ads,50915,45,54.00
+04/20/2026,Prospecting_Lookalike_1pct,Google Ads,,62,96.10
+04/21/2026,Always On - Awareness (NA),Meta,52497,79,150.10
+04/22/2026,Promo: Summer Bundle 2026,Google Ads,53288,96,216.00
+04/23/2026,LinkedIn ABM - Enterprise,LinkedIn,54079,113,293.80
+04/24/2026,Q3_Brand_Search_US,Meta,54870,130,383.50
+04/25/2026,Retargeting - Cart Abandoners,Google Ads,55661,147,485.10
+04/26/2026,Prospecting_Lookalike_1pct,Google Ads,56452,164,196.80
+04/27/2026,Always On - Awareness (NA),Meta,57243,181,280.55
+04/28/2026,Promo: Summer Bundle 2026,Google Ads,58034,198,376.20
+04/29/2026,LinkedIn ABM - Enterprise,LinkedIn,58825,215,483.75
+04/30/2026,Q3_Brand_Search_US,Meta,59616,232,603.20
+05/01/2026,Retargeting - Cart Abandoners,Google Ads,60407,249,734.55
+05/02/2026,Prospecting_Lookalike_1pct,Google Ads,61198,266,877.80
+05/03/2026,Always On - Awareness (NA),Meta,61989,283,339.60
+05/04/2026,Promo: Summer Bundle 2026,Google Ads,62780,,465.00
+05/05/2026,LinkedIn ABM - Enterprise,LinkedIn,63571,317,602.30
+05/06/2026,Q3_Brand_Search_US,Meta,64362,334,751.50
+05/07/2026,Retargeting - Cart Abandoners,Google Ads,65153,351,912.60
+05/08/2026,Prospecting_Lookalike_1pct,Google Ads,65944,368,1085.60
+05/09/2026,Always On - Awareness (NA),Meta,66735,385,1270.50
+05/10/2026,Promo: Summer Bundle 2026,Google Ads,67526,402,482.40
+05/11/2026,LinkedIn ABM - Enterprise,LinkedIn,68317,419,649.45
+05/12/2026,Q3_Brand_Search_US,Meta,69108,436,828.40
+05/13/2026,Retargeting - Cart Abandoners,Google Ads,69899,453,1019.25
+05/14/2026,Prospecting_Lookalike_1pct,Google Ads,70690,50,130.00
+05/15/2026,Always On - Awareness (NA),Meta,71481,67,
+05/16/2026,Promo: Summer Bundle 2026,Google Ads,72272,84,277.20
+05/17/2026,LinkedIn ABM - Enterprise,LinkedIn,73063,101,121.20
+05/18/2026,Q3_Brand_Search_US,Meta,73854,118,182.90
+05/19/2026,Retargeting - Cart Abandoners,Google Ads,74645,135,256.50
+05/20/2026,Prospecting_Lookalike_1pct,Google Ads,75436,152,342.00
+05/21/2026,Always On - Awareness (NA),Meta,76227,169,439.40
+05/22/2026,Promo: Summer Bundle 2026,Google Ads,77018,186,548.70
+05/23/2026,LinkedIn ABM - Enterprise,LinkedIn,77809,203,669.90
+05/24/2026,Q3_Brand_Search_US,Meta,78600,220,264.00
+05/25/2026,Retargeting - Cart Abandoners,Google Ads,79391,237,367.35
+05/26/2026,Prospecting_Lookalike_1pct,Google Ads,80182,254,482.60
+05/27/2026,Always On - Awareness (NA),Meta,80973,271,609.75
+05/28/2026,Promo: Summer Bundle 2026,Google Ads,81764,288,748.80
+05/29/2026,LinkedIn ABM - Enterprise,LinkedIn,82555,305,899.75
+05/30/2026,Q3_Brand_Search_US,Meta,83346,322,1062.60
+05/31/2026,Retargeting - Cart Abandoners,Google Ads,84137,339,406.80
+06/01/2026,Prospecting_Lookalike_1pct,Google Ads,84928,356,551.80
+06/02/2026,Always On - Awareness (NA),Meta,85719,373,708.70
+06/03/2026,Promo: Summer Bundle 2026,Google Ads,86510,390,877.50
+06/04/2026,LinkedIn ABM - Enterprise,LinkedIn,87301,407,1058.20
+06/05/2026,Q3_Brand_Search_US,Meta,88092,424,1250.80
+06/06/2026,Retargeting - Cart Abandoners,Google Ads,,441,1455.30
+06/07/2026,Prospecting_Lookalike_1pct,Google Ads,89674,458,549.60
+06/08/2026,Always On - Awareness (NA),Meta,90465,55,85.25
+06/09/2026,Promo: Summer Bundle 2026,Google Ads,91256,72,136.80
+06/10/2026,LinkedIn ABM - Enterprise,LinkedIn,92047,89,200.25
+06/11/2026,Q3_Brand_Search_US,Meta,92838,106,275.60
+06/12/2026,Retargeting - Cart Abandoners,Google Ads,93629,123,362.85
+06/13/2026,Prospecting_Lookalike_1pct,Google Ads,94420,140,462.00
+06/14/2026,Always On - Awareness (NA),Meta,95211,157,188.40
+06/15/2026,Promo: Summer Bundle 2026,Google Ads,96002,174,269.70
+06/16/2026,LinkedIn ABM - Enterprise,LinkedIn,96793,191,362.90
+06/17/2026,Q3_Brand_Search_US,Meta,97584,208,468.00
+06/18/2026,Retargeting - Cart Abandoners,Google Ads,98375,225,585.00
+06/19/2026,Prospecting_Lookalike_1pct,Google Ads,99166,242,713.90
+06/20/2026,Always On - Awareness (NA),Meta,99957,259,854.70
+06/21/2026,Promo: Summer Bundle 2026,Google Ads,12748,276,331.20
+06/22/2026,LinkedIn ABM - Enterprise,LinkedIn,13539,293,454.15
+06/23/2026,Q3_Brand_Search_US,Meta,14330,310,589.00
+06/24/2026,Retargeting - Cart Abandoners,Google Ads,15121,327,735.75
+06/25/2026,Prospecting_Lookalike_1pct,Google Ads,15912,344,894.40
+06/26/2026,Always On - Awareness (NA),Meta,16703,,1064.95
+06/27/2026,Promo: Summer Bundle 2026,Google Ads,17494,378,1247.40
+06/28/2026,LinkedIn ABM - Enterprise,LinkedIn,18285,395,474.00
+03/01/2026,Q3_Brand_Search_US,Meta,19076,412,638.60
+03/02/2026,Retargeting - Cart Abandoners,Google Ads,19867,429,815.10
+03/03/2026,Prospecting_Lookalike_1pct,Google Ads,20658,446,1003.50
+03/04/2026,Always On - Awareness (NA),Meta,21449,43,111.80
+03/05/2026,Promo: Summer Bundle 2026,Google Ads,22240,60,177.00
+03/06/2026,LinkedIn ABM - Enterprise,LinkedIn,23031,77,254.10
+03/07/2026,Q3_Brand_Search_US,Meta,23822,94,112.80
+03/08/2026,Retargeting - Cart Abandoners,Google Ads,24613,111,172.05
+03/09/2026,Prospecting_Lookalike_1pct,Google Ads,25404,128,243.20
+03/10/2026,Always On - Awareness (NA),Meta,26195,145,326.25
+03/11/2026,Promo: Summer Bundle 2026,Google Ads,26986,162,421.20
+03/12/2026,LinkedIn ABM - Enterprise,LinkedIn,27777,179,528.05
+03/13/2026,Q3_Brand_Search_US,Meta,28568,196,646.80
+03/14/2026,Retargeting - Cart Abandoners,Google Ads,29359,213,255.60
+03/15/2026,Prospecting_Lookalike_1pct,Google Ads,30150,230,356.50
+03/16/2026,Always On - Awareness (NA),Meta,30941,247,469.30
+03/17/2026,Promo: Summer Bundle 2026,Google Ads,31732,264,
+03/18/2026,LinkedIn ABM - Enterprise,LinkedIn,32523,281,730.60
+03/19/2026,Q3_Brand_Search_US,Meta,33314,298,879.10
+03/20/2026,Retargeting - Cart Abandoners,Google Ads,34105,315,1039.50
+03/21/2026,Prospecting_Lookalike_1pct,Google Ads,34896,332,398.40
+03/22/2026,Always On - Awareness (NA),Meta,35687,349,540.95
+03/23/2026,Promo: Summer Bundle 2026,Google Ads,36478,366,695.40
+03/24/2026,LinkedIn ABM - Enterprise,LinkedIn,37269,383,861.75
+03/25/2026,Q3_Brand_Search_US,Meta,,400,1040.00
+03/26/2026,Retargeting - Cart Abandoners,Google Ads,38851,417,1230.15
+03/27/2026,Prospecting_Lookalike_1pct,Google Ads,39642,434,1432.20
+03/28/2026,Always On - Awareness (NA),Meta,40433,451,541.20
+03/29/2026,Promo: Summer Bundle 2026,Google Ads,41224,48,74.40
+03/30/2026,LinkedIn ABM - Enterprise,LinkedIn,42015,65,123.50
+03/31/2026,Q3_Brand_Search_US,Meta,42806,82,184.50
+04/01/2026,Retargeting - Cart Abandoners,Google Ads,43597,99,257.40
+04/02/2026,Prospecting_Lookalike_1pct,Google Ads,44388,116,342.20
+04/03/2026,Always On - Awareness (NA),Meta,45179,133,438.90
+04/04/2026,Promo: Summer Bundle 2026,Google Ads,45970,150,180.00
+04/05/2026,LinkedIn ABM - Enterprise,LinkedIn,46761,167,258.85
+04/06/2026,Q3_Brand_Search_US,Meta,47552,184,349.60
+04/07/2026,Retargeting - Cart Abandoners,Google Ads,48343,201,452.25
+04/08/2026,Prospecting_Lookalike_1pct,Google Ads,49134,218,566.80
+04/09/2026,Always On - Awareness (NA),Meta,49925,235,693.25
+04/10/2026,Promo: Summer Bundle 2026,Google Ads,50716,252,831.60
+04/11/2026,LinkedIn ABM - Enterprise,LinkedIn,51507,269,322.80
+04/12/2026,Q3_Brand_Search_US,Meta,52298,286,443.30
+04/13/2026,Retargeting - Cart Abandoners,Google Ads,53089,303,575.70
+04/14/2026,Prospecting_Lookalike_1pct,Google Ads,53880,320,720.00
+04/15/2026,Always On - Awareness (NA),Meta,54671,337,876.20
+04/16/2026,Promo: Summer Bundle 2026,Google Ads,55462,354,1044.30
+04/17/2026,LinkedIn ABM - Enterprise,LinkedIn,56253,371,1224.30
+04/18/2026,Q3_Brand_Search_US,Meta,57044,388,465.60
+04/19/2026,Retargeting - Cart Abandoners,Google Ads,57835,405,627.75
+04/20/2026,Prospecting_Lookalike_1pct,Google Ads,58626,,801.80
+04/21/2026,Always On - Awareness (NA),Meta,59417,439,987.75
+04/22/2026,Promo: Summer Bundle 2026,Google Ads,60208,456,1185.60
+04/23/2026,LinkedIn ABM - Enterprise,LinkedIn,60999,53,156.35
+04/24/2026,Q3_Brand_Search_US,Meta,61790,70,231.00
+04/25/2026,Retargeting - Cart Abandoners,Google Ads,62581,87,104.40
+04/26/2026,Prospecting_Lookalike_1pct,Google Ads,63372,104,161.20
+04/27/2026,Always On - Awareness (NA),Meta,64163,121,229.90
+04/28/2026,Promo: Summer Bundle 2026,Google Ads,64954,138,310.50
+04/29/2026,LinkedIn ABM - Enterprise,LinkedIn,65745,155,403.00
+04/30/2026,Q3_Brand_Search_US,Meta,66536,172,507.40
+05/01/2026,Retargeting - Cart Abandoners,Google Ads,67327,189,623.70
+05/02/2026,Prospecting_Lookalike_1pct,Google Ads,68118,206,247.20
+05/03/2026,Always On - Awareness (NA),Meta,68909,223,345.65
+05/04/2026,Promo: Summer Bundle 2026,Google Ads,69700,240,456.00
+05/05/2026,LinkedIn ABM - Enterprise,LinkedIn,70491,257,578.25
+05/06/2026,Q3_Brand_Search_US,Meta,71282,274,712.40
+05/07/2026,Retargeting - Cart Abandoners,Google Ads,72073,291,858.45
+05/08/2026,Prospecting_Lookalike_1pct,Google Ads,72864,308,1016.40
+05/09/2026,Always On - Awareness (NA),Meta,73655,325,390.00
+05/10/2026,Promo: Summer Bundle 2026,Google Ads,74446,342,530.10
+05/11/2026,LinkedIn ABM - Enterprise,LinkedIn,,359,682.10
+05/12/2026,Q3_Brand_Search_US,Meta,76028,376,846.00
+05/13/2026,Retargeting - Cart Abandoners,Google Ads,76819,393,1021.80
+05/14/2026,Prospecting_Lookalike_1pct,Google Ads,77610,410,1209.50
+05/15/2026,Always On - Awareness (NA),Meta,78401,427,1409.10
+05/16/2026,Promo: Summer Bundle 2026,Google Ads,79192,444,532.80
+05/17/2026,LinkedIn ABM - Enterprise,LinkedIn,79983,41,
+05/18/2026,Q3_Brand_Search_US,Meta,80774,58,110.20
+05/19/2026,Retargeting - Cart Abandoners,Google Ads,81565,75,168.75
+05/20/2026,Prospecting_Lookalike_1pct,Google Ads,82356,92,239.20
+05/21/2026,Always On - Awareness (NA),Meta,83147,109,321.55
+05/22/2026,Promo: Summer Bundle 2026,Google Ads,83938,126,415.80
+05/23/2026,LinkedIn ABM - Enterprise,LinkedIn,84729,143,171.60
+05/24/2026,Q3_Brand_Search_US,Meta,85520,160,248.00
+05/25/2026,Retargeting - Cart Abandoners,Google Ads,86311,177,336.30
+05/26/2026,Prospecting_Lookalike_1pct,Google Ads,87102,194,436.50
+05/27/2026,Always On - Awareness (NA),Meta,87893,211,548.60
+05/28/2026,Promo: Summer Bundle 2026,Google Ads,88684,228,672.60
+05/29/2026,LinkedIn ABM - Enterprise,LinkedIn,89475,245,808.50
+05/30/2026,Q3_Brand_Search_US,Meta,90266,262,314.40
+05/31/2026,Retargeting - Cart Abandoners,Google Ads,91057,279,432.45
+06/01/2026,Prospecting_Lookalike_1pct,Google Ads,91848,296,562.40
+06/02/2026,Always On - Awareness (NA),Meta,92639,313,704.25
+06/03/2026,Promo: Summer Bundle 2026,Google Ads,93430,330,858.00
+06/04/2026,LinkedIn ABM - Enterprise,LinkedIn,94221,347,1023.65
+06/05/2026,Q3_Brand_Search_US,Meta,95012,364,1201.20
+06/06/2026,Retargeting - Cart Abandoners,Google Ads,95803,381,457.20
+06/07/2026,Prospecting_Lookalike_1pct,Google Ads,96594,398,616.90
+06/08/2026,Always On - Awareness (NA),Meta,97385,415,788.50
+06/09/2026,Promo: Summer Bundle 2026,Google Ads,98176,432,972.00
+06/10/2026,LinkedIn ABM - Enterprise,LinkedIn,98967,449,1167.40
+06/11/2026,Q3_Brand_Search_US,Meta,99758,46,135.70
+06/12/2026,Retargeting - Cart Abandoners,Google Ads,12549,,207.90
+06/13/2026,Prospecting_Lookalike_1pct,Google Ads,13340,80,96.00
+06/14/2026,Always On - Awareness (NA),Meta,14131,97,150.35
+06/15/2026,Promo: Summer Bundle 2026,Google Ads,14922,114,216.60
+06/16/2026,LinkedIn ABM - Enterprise,LinkedIn,15713,131,294.75
+06/17/2026,Q3_Brand_Search_US,Meta,16504,148,384.80
+06/18/2026,Retargeting - Cart Abandoners,Google Ads,17295,165,486.75
+06/19/2026,Prospecting_Lookalike_1pct,Google Ads,18086,182,600.60
+06/20/2026,Always On - Awareness (NA),Meta,18877,199,238.80
+06/21/2026,Promo: Summer Bundle 2026,Google Ads,19668,216,334.80
+06/22/2026,LinkedIn ABM - Enterprise,LinkedIn,20459,233,442.70
+06/23/2026,Q3_Brand_Search_US,Meta,21250,250,562.50
+06/24/2026,Retargeting - Cart Abandoners,Google Ads,22041,267,694.20
+06/25/2026,Prospecting_Lookalike_1pct,Google Ads,22832,284,837.80
+06/26/2026,Always On - Awareness (NA),Meta,23623,301,993.30
+06/27/2026,Promo: Summer Bundle 2026,Google Ads,,318,381.60
+06/28/2026,LinkedIn ABM - Enterprise,LinkedIn,25205,335,519.25
+03/01/2026,Q3_Brand_Search_US,Meta,25996,352,668.80
+03/02/2026,Retargeting - Cart Abandoners,Google Ads,26787,369,830.25
+03/03/2026,Prospecting_Lookalike_1pct,Google Ads,27578,386,1003.60
+03/04/2026,Always On - Awareness (NA),Meta,28369,403,1188.85
+03/05/2026,Promo: Summer Bundle 2026,Google Ads,29160,420,1386.00
+03/06/2026,LinkedIn ABM - Enterprise,LinkedIn,29951,437,524.40
+03/07/2026,Q3_Brand_Search_US,Meta,30742,454,703.70
+03/08/2026,Retargeting - Cart Abandoners,Google Ads,31533,51,96.90
+03/09/2026,Prospecting_Lookalike_1pct,Google Ads,32324,68,153.00
+03/10/2026,Always On - Awareness (NA),Meta,33115,85,221.00
+03/11/2026,Promo: Summer Bundle 2026,Google Ads,33906,102,300.90
+03/12/2026,LinkedIn ABM - Enterprise,LinkedIn,34697,119,392.70
+03/13/2026,Q3_Brand_Search_US,Meta,35488,136,163.20
+03/14/2026,Retargeting - Cart Abandoners,Google Ads,36279,153,237.15
+03/15/2026,Prospecting_Lookalike_1pct,Google Ads,37070,170,323.00
+03/16/2026,Always On - Awareness (NA),Meta,37861,187,420.75
+03/17/2026,Promo: Summer Bundle 2026,Google Ads,38652,204,530.40
+03/18/2026,LinkedIn ABM - Enterprise,LinkedIn,39443,221,651.95
+03/19/2026,Q3_Brand_Search_US,Meta,40234,238,
+03/20/2026,Retargeting - Cart Abandoners,Google Ads,41025,255,306.00
+03/21/2026,Prospecting_Lookalike_1pct,Google Ads,41816,272,421.60
+03/22/2026,Always On - Awareness (NA),Meta,42607,289,549.10
+03/23/2026,Promo: Summer Bundle 2026,Google Ads,43398,306,688.50
+03/24/2026,LinkedIn ABM - Enterprise,LinkedIn,44189,323,839.80
+03/25/2026,Q3_Brand_Search_US,Meta,44980,340,1003.00
+03/26/2026,Retargeting - Cart Abandoners,Google Ads,45771,357,1178.10
+03/27/2026,Prospecting_Lookalike_1pct,Google Ads,46562,374,448.80
+03/28/2026,Always On - Awareness (NA),Meta,47353,391,606.05
+03/29/2026,Promo: Summer Bundle 2026,Google Ads,48144,408,775.20
+03/30/2026,LinkedIn ABM - Enterprise,LinkedIn,48935,425,956.25
+03/31/2026,Q3_Brand_Search_US,Meta,49726,442,1149.20
+04/01/2026,Retargeting - Cart Abandoners,Google Ads,50517,459,1354.05
+04/02/2026,Prospecting_Lookalike_1pct,Google Ads,51308,56,184.80
+04/03/2026,Always On - Awareness (NA),Meta,52099,73,87.60
+04/04/2026,Promo: Summer Bundle 2026,Google Ads,52890,90,139.50
+04/05/2026,LinkedIn ABM - Enterprise,LinkedIn,53681,107,203.30
+04/06/2026,Q3_Brand_Search_US,Meta,54472,,279.00
+04/07/2026,Retargeting - Cart Abandoners,Google Ads,55263,141,366.60
+04/08/2026,Prospecting_Lookalike_1pct,Google Ads,56054,158,466.10
+04/09/2026,Always On - Awareness (NA),Meta,56845,175,577.50
+04/10/2026,Promo: Summer Bundle 2026,Google Ads,57636,192,230.40
+04/11/2026,LinkedIn ABM - Enterprise,LinkedIn,58427,209,323.95
+04/12/2026,Q3_Brand_Search_US,Meta,59218,226,429.40
+04/13/2026,Retargeting - Cart Abandoners,Google Ads,60009,243,546.75
+04/14/2026,Prospecting_Lookalike_1pct,Google Ads,60800,260,676.00
+04/15/2026,Always On - Awareness (NA),Meta,,277,817.15
+04/16/2026,Promo: Summer Bundle 2026,Google Ads,62382,294,970.20
+04/17/2026,LinkedIn ABM - Enterprise,LinkedIn,63173,311,373.20
+04/18/2026,Q3_Brand_Search_US,Meta,63964,328,508.40
+04/19/2026,Retargeting - Cart Abandoners,Google Ads,64755,345,655.50
+04/20/2026,Prospecting_Lookalike_1pct,Google Ads,65546,362,814.50
+04/21/2026,Always On - Awareness (NA),Meta,66337,379,985.40
+04/22/2026,Promo: Summer Bundle 2026,Google Ads,67128,396,1168.20
+04/23/2026,LinkedIn ABM - Enterprise,LinkedIn,67919,413,1362.90
+04/24/2026,Q3_Brand_Search_US,Meta,68710,430,516.00
+04/25/2026,Retargeting - Cart Abandoners,Google Ads,69501,447,692.85
+04/26/2026,Prospecting_Lookalike_1pct,Google Ads,70292,44,83.60
+04/27/2026,Always On - Awareness (NA),Meta,71083,61,137.25
+04/28/2026,Promo: Summer Bundle 2026,Google Ads,71874,78,202.80
+04/29/2026,LinkedIn ABM - Enterprise,LinkedIn,72665,95,280.25
+04/30/2026,Q3_Brand_Search_US,Meta,73456,112,369.60
+05/01/2026,Retargeting - Cart Abandoners,Google Ads,74247,129,154.80
+05/02/2026,Prospecting_Lookalike_1pct,Google Ads,75038,146,226.30
+05/03/2026,Always On - Awareness (NA),Meta,75829,163,309.70
+05/04/2026,Promo: Summer Bundle 2026,Google Ads,76620,180,405.00
+05/05/2026,LinkedIn ABM - Enterprise,LinkedIn,77411,197,512.20
+05/06/2026,Q3_Brand_Search_US,Meta,78202,214,631.30
+05/07/2026,Retargeting - Cart Abandoners,Google Ads,78993,231,762.30
+05/08/2026,Prospecting_Lookalike_1pct,Google Ads,79784,248,297.60
+05/09/2026,Always On - Awareness (NA),Meta,80575,265,410.75
+05/10/2026,Promo: Summer Bundle 2026,Google Ads,81366,282,535.80
+05/11/2026,LinkedIn ABM - Enterprise,LinkedIn,82157,299,672.75
+05/12/2026,Q3_Brand_Search_US,Meta,82948,316,821.60
+05/13/2026,Retargeting - Cart Abandoners,Google Ads,83739,333,982.35
+05/14/2026,Prospecting_Lookalike_1pct,Google Ads,84530,350,1155.00
+05/15/2026,Always On - Awareness (NA),Meta,85321,367,440.40
+05/16/2026,Promo: Summer Bundle 2026,Google Ads,86112,384,595.20
+05/17/2026,LinkedIn ABM - Enterprise,LinkedIn,86903,401,761.90
+05/18/2026,Q3_Brand_Search_US,Meta,87694,418,940.50
+05/19/2026,Retargeting - Cart Abandoners,Google Ads,88485,435,
+05/20/2026,Prospecting_Lookalike_1pct,Google Ads,89276,452,1333.40
+05/21/2026,Always On - Awareness (NA),Meta,90067,49,161.70
+05/22/2026,Promo: Summer Bundle 2026,Google Ads,90858,66,79.20
+05/23/2026,LinkedIn ABM - Enterprise,LinkedIn,91649,83,128.65
+05/24/2026,Q3_Brand_Search_US,Meta,92440,100,190.00
+05/25/2026,Retargeting - Cart Abandoners,Google Ads,93231,117,263.25
+05/26/2026,Prospecting_Lookalike_1pct,Google Ads,94022,134,348.40
+05/27/2026,Always On - Awareness (NA),Meta,94813,151,445.45
+05/28/2026,Promo: Summer Bundle 2026,Google Ads,95604,168,554.40
+05/29/2026,LinkedIn ABM - Enterprise,LinkedIn,96395,,222.00
+05/30/2026,Q3_Brand_Search_US,Meta,97186,202,313.10
+05/31/2026,Retargeting - Cart Abandoners,Google Ads,97977,219,416.10
+06/01/2026,Prospecting_Lookalike_1pct,Google Ads,,236,531.00
+06/02/2026,Always On - Awareness (NA),Meta,99559,253,657.80
+06/03/2026,Promo: Summer Bundle 2026,Google Ads,12350,270,796.50
+06/04/2026,LinkedIn ABM - Enterprise,LinkedIn,13141,287,947.10
+06/05/2026,Q3_Brand_Search_US,Meta,13932,304,364.80
+06/06/2026,Retargeting - Cart Abandoners,Google Ads,14723,321,497.55
+06/07/2026,Prospecting_Lookalike_1pct,Google Ads,15514,338,642.20
+06/08/2026,Always On - Awareness (NA),Meta,16305,355,798.75

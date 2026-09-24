@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pipeline-pulse",
+  "account_id": "4653c1ab885ae65ebea83b3804643010",
+  "main": "vinext/server/app-router-entry",
+  "compatibility_date": "2026-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "tiagomf.com/pipeline", "zone_id": "a17879a43a18fcc259f67013d9b46598" },
+    { "pattern": "tiagomf.com/pipeline/*", "zone_id": "a17879a43a18fcc259f67013d9b46598" }
+  ],
+  "assets": { "not_found_handling": "none" },
+  "vars": { "APP_ORIGIN": "https://tiagomf.com" },
+  "observability": { "enabled": true, "traces": { "enabled": true } }
+}
