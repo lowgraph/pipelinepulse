@@ -23,12 +23,14 @@ export default defineConfig({
     viewport: { width: 1440, height: 1050 },
     screenshot: 'only-on-failure',
   },
-  webServer: {
-    command: 'node portfolio/preview.mjs',
-    url: 'http://127.0.0.1:3100',
-    reuseExistingServer: !process.env.CI,
-    timeout: 10000,
-  },
+  webServer: process.env.PORTFOLIO_BASE_URL
+    ? undefined
+    : {
+        command: 'node portfolio/preview.mjs',
+        url: 'http://127.0.0.1:3100',
+        reuseExistingServer: !process.env.CI,
+        timeout: 10000,
+      },
   projects: [
     {
       name: 'portfolio',

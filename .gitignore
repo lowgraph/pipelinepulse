@@ -12,6 +12,8 @@ dist/
 
 # Local portfolio working copy and agent tooling are not app source.
 portfolio/*
+!portfolio/preview.mjs
+!portfolio/README.md
 !portfolio/assets/
 portfolio/assets/*
 !portfolio/assets/updates/

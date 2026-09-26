@@ -114,7 +114,7 @@ Node tests cover duplicate replay, conflicting CRM versions, order invariance, u
 
 - **Unit tests:** `npm test` runs the Node.js test runner across all deterministic unit suites (`tests/*.test.js`).
 - **Application browser tests:** `npx playwright test` (or `npm run test:browser`) uses default [`playwright.config.js`](playwright.config.js) (`project: app`) targeting `http://127.0.0.1:3000`. Portfolio presentation specs are excluded by default via `testIgnore`.
-- **Portfolio presentation tests:** `npm run test:portfolio` uses dedicated [`playwright.portfolio.config.js`](playwright.portfolio.config.js) (`project: portfolio`). It targets `http://127.0.0.1:3100` and automatically starts `node portfolio/preview.mjs` via Playwright's `webServer` lifecycle (or reuses an existing instance). Note that static portfolio HTML in `portfolio/` is git-ignored, while approved test fixtures are tracked in `portfolio/assets/updates/`.
+- **Portfolio presentation tests:** `npm run test:portfolio` uses dedicated [`playwright.portfolio.config.js`](playwright.portfolio.config.js) (`project: portfolio`). It targets `http://127.0.0.1:3100` and automatically starts the tracked generic preview script (`node portfolio/preview.mjs`) via Playwright's `webServer` lifecycle. Alternatively, set `PORTFOLIO_BASE_URL` to test directly against an existing deployment (e.g. `PORTFOLIO_BASE_URL=https://tiagomf.com npm run test:portfolio`). See [`portfolio/README.md`](portfolio/README.md) for details on obtaining external site files.
 
 Framework configuration follows the official [Next.js installation guide](https://nextjs.org/docs/app/getting-started/installation) and [Tailwind CSS PostCSS setup](https://tailwindcss.com/docs/installation/framework-guides/nextjs).
 
