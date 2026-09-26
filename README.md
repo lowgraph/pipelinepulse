@@ -1,6 +1,8 @@
 # Pipeline Pulse
 
-A marketing intelligence prototype built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is browser-local. The page starts empty; users can upload an advertising CSV and a CRM CSV or try clearly labeled synthetic sample data with one click.
+A deterministic marketing data reconciliation and performance intelligence application built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is entirely browser-local and deterministic. The application reconciles paid advertising spend with CRM opportunity pipelines to calculate verified CAC, ROAS, and pipeline metrics.
+
+For architecture and agent guidance, see [System Architecture](docs/ARCHITECTURE.md) and [Agent Path Migration Guide](docs/AGENT_PATH_MIGRATION.md).
 
 ## Run
 

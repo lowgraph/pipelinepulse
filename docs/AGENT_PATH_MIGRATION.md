@@ -1,0 +1,62 @@
+# Agent Path Migration Guide — Pipeline Pulse
+
+Date: 2026-09-26  
+Branch: `portfolio/restructure`
+
+This document defines canonical repository locations, path migrations, and operational guidelines for AI agents working in this repository.
+
+---
+
+## 1. Repository Map
+
+| Area | Canonical Path | Description |
+|---|---|---|
+| **Application UI** | `app/` | Next.js App Router root (`layout.js`, `page.js`, `globals.css`, `api/explain/route.js`) |
+| **Components** | `components/` | React 19 UI presentation components (`import-panel.js`, `kpi-cards.js`, etc.) |
+| **Core Domain** | `lib/` | Deterministic pipeline (`pipeline.js`), CSV format parser (`import-format.js`), sample data generator (`sample-data.js`), translations (`translations.js`) |
+| **Sample Data** | `data/sample-exports/` | Synthetic CSV export files for manual download and import testing |
+| **Test Suites** | `tests/` | Node built-in unit tests (`tests/*.test.js`) and Playwright specs (`tests/browser/*.spec.js`) |
+| **Test Fixtures** | `tests/fixtures/` | Input fixtures used directly by automated test suites (`crm-sales.csv`, `media-spend.csv`) |
+| **Architecture & Docs**| `docs/` | System architecture (`ARCHITECTURE.md`) and migration guides (`AGENT_PATH_MIGRATION.md`) |
+| **Tooling & Scripts** | `scripts/` | Local scripts (`local-chatgpt.mjs`, `local-chatgpt-adapter.mjs`, `deployment-smoke.mjs`) |
+| **Portfolio Assets** | `portfolio/` | Portfolio site files (`portfolio/site/`) and candidate asset updates (`portfolio/assets/updates/`) |
+
+---
+
+## 2. Path Migration Table
+
+| Deprecated / Old Path | Canonical New Path | Purpose |
+|---|---|---|
+| `presentation-samples/` | `data/sample-exports/` | Sample advertising & CRM CSV files |
+| `Update 25-09/` | `portfolio/assets/updates/` | Local candidate screenshots and CV PDFs |
+
+---
+
+## 3. Deprecated Paths (Do Not Recreate)
+
+> [!WARNING]
+> Do NOT create or write new files to:
+> - `presentation-samples/`
+> - `Update 25-09/`
+> 
+> All sample data belongs in `data/sample-exports/`. All update assets belong in `portfolio/assets/updates/`.
+
+---
+
+## 4. Supported Commands & Verification
+
+- **Install dependencies**: `npm install` (requires Node.js >=22.12.0)
+- **Run unit tests**: `npm test` (uses Node.js test runner against `tests/*.test.js`)
+- **Run browser tests**: `npx playwright test`
+- **Development server**: `npm run dev` (starts Next.js at `http://127.0.0.1:3000`)
+- **Production Next.js build**: `npm run build`
+- **Cloudflare Worker build**: `npm run build:cloudflare` (runs `vite build` via vinext)
+- **Local opt-in ChatGPT launcher**: `npm run dev:chatgpt` (starts local server on port 3002)
+
+---
+
+## 5. Agent Invariants
+
+1. **Deterministic Calculation**: Never add probabilistic or LLM-dependent calculations to `lib/pipeline.js` or `lib/import-format.js`.
+2. **Public API Boundary**: `app/api/explain/route.js` must always reject with status 403.
+3. **No Private Secrets**: Never commit `.env`, API keys, client tokens, or real customer CSVs.
