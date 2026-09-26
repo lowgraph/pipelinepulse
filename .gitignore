@@ -11,7 +11,10 @@ dist/
 .wrangler/
 
 # Local portfolio working copy and agent tooling are not app source.
-portfolio/
+portfolio/*
+!portfolio/assets/
+portfolio/assets/*
+!portfolio/assets/updates/
 .agents/
 CLAUDE.md
 skills-lock.json

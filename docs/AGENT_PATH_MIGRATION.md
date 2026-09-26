@@ -19,7 +19,7 @@ This document defines canonical repository locations, path migrations, and opera
 | **Test Fixtures** | `tests/fixtures/` | Input fixtures used directly by automated test suites (`crm-sales.csv`, `media-spend.csv`) |
 | **Architecture & Docs**| `docs/` | System architecture (`ARCHITECTURE.md`) and migration guides (`AGENT_PATH_MIGRATION.md`) |
 | **Tooling & Scripts** | `scripts/` | Local scripts (`local-chatgpt.mjs`, `local-chatgpt-adapter.mjs`, `deployment-smoke.mjs`) |
-| **Portfolio Assets** | `portfolio/` | Portfolio site files (`portfolio/site/`) and candidate asset updates (`portfolio/assets/updates/`) |
+| **Portfolio Assets** | `portfolio/assets/updates/` | Approved candidate portfolio update assets and CV PDFs tracked as browser test fixtures |
 
 ---
 
@@ -47,7 +47,8 @@ This document defines canonical repository locations, path migrations, and opera
 
 - **Install dependencies**: `npm install` (requires Node.js >=22.12.0)
 - **Run unit tests**: `npm test` (uses Node.js test runner against `tests/*.test.js`)
-- **Run browser tests**: `npx playwright test`
+- **Run browser tests**: `npx playwright test` (application browser suites)
+- **Run portfolio browser tests**: `npm run test:portfolio` (portfolio preview suite against port 3100)
 - **Development server**: `npm run dev` (starts Next.js at `http://127.0.0.1:3000`)
 - **Production Next.js build**: `npm run build`
 - **Cloudflare Worker build**: `npm run build:cloudflare` (runs `vite build` via vinext)
