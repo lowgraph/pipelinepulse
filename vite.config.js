@@ -4,6 +4,7 @@ import { cloudflare } from '@cloudflare/vite-plugin';
 import { copyFileSync, mkdirSync } from 'node:fs';
 
 process.env.NEXT_PUBLIC_BASE_PATH = '/pipeline';
+process.env.NEXT_PUBLIC_PRIVATE_EXPLANATIONS = '0';
 
 export default defineConfig({
   plugins: [vinext(), cloudflare({ viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] } }), {

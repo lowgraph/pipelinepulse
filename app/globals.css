@@ -21,3 +21,5 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}.one-page .main-shell{margin
 .language-toggle button[aria-pressed="true"] { background: #4356ef; color: white; }
 .language-toggle button:focus-visible { outline: 2px solid #4356ef; outline-offset: 2px; }
 @media(max-width: 640px) { .demo-topbar { flex-wrap: wrap; gap: 12px; } .prototype-label { display: none; } }
+
+.sample-entry{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:16px 21px 0}.sample-entry .button{font-size:12px}.sample-entry>span,.sample-note{font-size:12px;color:var(--muted);line-height:1.7}.sample-note{margin:14px 21px 0;overflow-wrap:anywhere}

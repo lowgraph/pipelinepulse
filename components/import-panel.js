@@ -3,8 +3,14 @@ import { useLanguage, LanguageToggle } from '../components/language';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDownToLine, CheckCheck, ChevronDown, FileCheck2, GitMerge, LoaderCircle, RotateCcw, ShieldCheck, Upload } from 'lucide-react';
 import { analyze, decodeCSV, inspectCSV, resolveMappings, MAX_BYTES } from '../lib/pipeline';
+import { sampleFiles } from '../lib/sample-data';
 
 const defaults = { currency: 'auto', decimal: 'auto', adsDateOrder: 'auto', crmDateOrder: 'auto', adsMapping: {}, crmMapping: {}, statusMapping: {} };
+async function decodeFile(file) {
+  if (!/\.(csv|tsv|txt)$/i.test(file.name)) throw new Error('Choose a CSV, TSV, or delimited text export.');
+  if (file.size > MAX_BYTES) throw new Error('File exceeds the 5 MB limit.');
+  return { name: file.name, ...decodeCSV(await file.arrayBuffer()) };
+}
 function detect(file, kind, mapping) { if (!file) return null; try { return inspectCSV(file.text, kind, mapping); } catch (error) { return { error: error.message, headers: [], columns: {}, missing: [], ambiguous: [] }; } }
 function UploadSlot({ kind, file, detection, onFile, error, reading }) {
   const { t } = useLanguage();
@@ -23,34 +29,55 @@ export default function ImportPanel({ onAnalyze, onReset }) {
   const [files, setFiles] = useState({ ads: null, crm: null }); const [options, setOptions] = useState(defaults);
   const [errors, setErrors] = useState({}); const [reading, setReading] = useState({}); const [busy, setBusy] = useState(false); const [settingsOpen, setSettingsOpen] = useState(false);
   const version = useRef({ ads: 0, crm: 0 });
+  useEffect(() => () => { version.current.ads++; version.current.crm++; }, []);
   const detections = useMemo(() => { const mapped = files.ads && files.crm ? resolveMappings(files.ads.text, files.crm.text, options) : options; return { ads: detect(files.ads, 'ads', mapped.adsMapping), crm: detect(files.crm, 'crm', mapped.crmMapping) }; }, [files, options]);
   const needsMapping = Object.values(detections).some(d => d && (d.missing.length || d.ambiguous.length || d.unknownStages?.length || d.ambiguousDates)) || !!(detections.crm && !detections.crm.columns.revenue);
   useEffect(() => { if (needsMapping) setSettingsOpen(true); }, [needsMapping]);
   async function read(kind, file) {
-    if (!file) return;
+    if (!file || busy) return;
     const revision = ++version.current[kind];
     setReading(prev => ({ ...prev, [kind]: true })); setFiles(prev => ({ ...prev, [kind]: null })); setErrors(prev => ({ ...prev, [kind]: null, general: null }));
     try {
-      if (!/\.(csv|tsv|txt)$/i.test(file.name)) throw new Error('Choose a CSV, TSV, or delimited text export.');
-      if (file.size > MAX_BYTES) throw new Error('File exceeds the 5 MB limit.');
-      const decoded = decodeCSV(await file.arrayBuffer()); if (revision !== version.current[kind]) return;
-      setFiles(prev => ({ ...prev, [kind]: { name: file.name, ...decoded } }));
+      const decoded = await decodeFile(file); if (revision !== version.current[kind]) return;
+      setFiles(prev => ({ ...prev, [kind]: decoded }));
       setOptions(prev => ({ ...prev, [`${kind}Mapping`]: {}, ...(kind === 'crm' ? { statusMapping: {} } : {}) }));
     } catch (error) { if (revision === version.current[kind]) setErrors(prev => ({ ...prev, [kind]: error.message })); }
     finally { if (revision === version.current[kind]) setReading(prev => ({ ...prev, [kind]: false })); }
   }
-  async function submit() {
+  async function submit(selected = files, settings = options) {
+    const revision = { ...version.current };
     setBusy(true); setErrors({}); await new Promise(resolve => setTimeout(resolve, 20));
-    try { const model = analyze(files.ads.text, files.crm.text, options);
+    try {
+      if (revision.ads !== version.current.ads || revision.crm !== version.current.crm) return;
+      const model = analyze(selected.ads.text, selected.crm.text, settings);
       if (!model.stats.acceptedAds || !model.stats.acceptedCrm) throw new Error(`No usable ${!model.stats.acceptedAds ? 'advertising' : 'CRM'} rows. ${model.issues.find(issue => issue.source === (!model.stats.acceptedAds ? 'ads' : 'crm'))?.reason || 'Review the detected columns.'} Previous results are unchanged.`);
-      onAnalyze(model, { ads: files.ads.text, crm: files.crm.text, settings: options, names: { ads: files.ads.name, crm: files.crm.name } }); setSettingsOpen(false);
+      onAnalyze(model, { ads: selected.ads.text, crm: selected.crm.text, settings, sample: !!(selected.ads.sample && selected.crm.sample), names: { ads: selected.ads.name, crm: selected.crm.name } }); setSettingsOpen(false);
     } catch (error) { setErrors({ general: error.message }); setSettingsOpen(true); }
+    finally { setBusy(false); }
+  }
+  async function loadSample() {
+    if (busy || reading.ads || reading.crm || files.ads || files.crm) return;
+    const revision = { ads: ++version.current.ads, crm: ++version.current.crm };
+    setBusy(true); setErrors({});
+    try {
+      const csv = sampleFiles();
+      const [ads, crm] = await Promise.all([
+        decodeFile(new File([csv.ads], 'sample-advertising.csv', { type: 'text/csv' })),
+        decodeFile(new File([csv.crm], 'sample-crm.csv', { type: 'text/csv' })),
+      ]);
+      if (revision.ads !== version.current.ads || revision.crm !== version.current.crm) return;
+      const selected = { ads: { ...ads, sample: true }, crm: { ...crm, sample: true } };
+      setFiles(selected); setOptions(defaults);
+      await submit(selected, defaults);
+    } catch (error) { setErrors({ general: error.message }); }
     finally { setBusy(false); }
   }
   function reset() { version.current.ads++; version.current.crm++; setFiles({ ads: null, crm: null }); setReading({}); setOptions(defaults); setErrors({}); setSettingsOpen(false); onReset(); }
   return <section id="import" className="panel import-panel"><div className="panel-heading"><div><h2>{t("Bring your data together")}</h2><p>{t("Drop in your exports. We detect the format and connect spend to revenue.")}</p></div><span className="local-note"><ShieldCheck size={14} />{t("Processed in your browser")}</span></div>
-    <div className="upload-grid">{['ads', 'crm'].map(kind => <UploadSlot key={kind} kind={kind} file={files[kind]} detection={detections[kind]} error={errors[kind]} reading={reading[kind]} onFile={file => read(kind, file)} />)}</div>
-    <div className="import-actions"><div className="import-links"><button className="text-button" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(!settingsOpen)}>{t("Detection settings")}{' '}<ChevronDown size={14} /></button><button className="text-button" onClick={reset}><RotateCcw size={13} />{t("Clear data")}</button></div><button className="button primary" disabled={!files.ads || !files.crm || busy || reading.ads || reading.crm} onClick={submit}>{busy ? <LoaderCircle size={17} className="spin" /> : <GitMerge size={17} />}{busy ? t("Reconciling…") : t("Analyze data")}</button></div>
+    <div className="upload-grid">{['ads', 'crm'].map(kind => <UploadSlot key={kind} kind={kind} file={files[kind]} detection={detections[kind]} error={errors[kind]} reading={reading[kind] || busy} onFile={file => read(kind, file)} />)}</div>
+    {!files.ads && !files.crm && <div className="sample-entry"><button className="button secondary" disabled={busy || reading.ads || reading.crm} onClick={loadSample}>{busy ? t("Reconciling…") : t("Try sample data")}</button><span>{t("Synthetic demo data")}</span></div>}
+    {files.ads?.sample && files.crm?.sample && <p className="sample-note">{t("Sample: Retargeting_CartAbandon matches Retargeting - Cart Abandoners without a campaign ID. Unmatched records keep recommendations in review.")}</p>}
+    <div className="import-actions"><div className="import-links"><button className="text-button" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(!settingsOpen)}>{t("Detection settings")}{' '}<ChevronDown size={14} /></button><button className="text-button" onClick={reset}><RotateCcw size={13} />{t("Clear data")}</button></div><button className="button primary" disabled={!files.ads || !files.crm || busy || reading.ads || reading.crm} onClick={() => submit()}>{busy ? <LoaderCircle size={17} className="spin" /> : <GitMerge size={17} />}{busy ? t("Reconciling…") : t("Analyze data")}</button></div>
     {settingsOpen && <div className="detection-settings"><p className="settings-intro">{t("Common formats are automatic. Confirm ambiguous dates or custom fields here. Unknown fields are never silently guessed.")}</p><div className="form-row"><label>{t("Reporting currency")}<select value={options.currency} onChange={event => setOptions({ ...options, currency: event.target.value })}><option value="auto">{t("Auto-detect · USD if unspecified")}</option>{['USD', 'BRL', 'EUR', 'GBP', 'CAD', 'AUD'].map(code => <option key={code}>{code}</option>)}</select></label><label>{t("Number format")}<select value={options.decimal} onChange={event => setOptions({ ...options, decimal: event.target.value })}><option value="auto">{t("Auto-detect per value")}</option><option value=".">{t("1,234.56 · decimal point")}</option><option value=",">{t("1.234,56 · decimal comma")}</option></select></label></div>
     <div className="mapping-grid">{['ads', 'crm'].map(kind => <div key={kind}><h3>{kind === 'ads' ? t("Advertising fields") : t("CRM fields")}</h3>{detections[kind]?.missing.length > 0 && <p className="error-text">{t("Select:")}{' '}{detections[kind].missing.join(', ')}</p>}{detections[kind]?.ambiguous.length > 0 && <p className="error-text">{t("Ambiguous:")}{' '}{detections[kind].ambiguous.join(', ')}</p>}
       {(kind === 'ads' ? ['campaignId', 'campaign', 'spend', 'date', 'currency'] : ['id', 'campaignId', 'campaign', 'status', 'revenue', 'date', 'currency']).map(field => <label key={field}>{t(field.replace(/([A-Z])/g, ' $1'))}<select aria-label={`${kind} ${field} column`} value={options[`${kind}Mapping`][field] || ''} onChange={event => setOptions({ ...options, [`${kind}Mapping`]: { ...options[`${kind}Mapping`], [field]: event.target.value } })}><option value="">{detections[kind]?.columns[field] ? `${t("Detected:")} ${detections[kind].columns[field]}` : t("Auto-detect")}</option>{detections[kind]?.headers.map(header => <option key={header}>{header}</option>)}</select></label>)}

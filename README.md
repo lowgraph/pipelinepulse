@@ -1,6 +1,6 @@
 # Pipeline Pulse
 
-A marketing intelligence prototype built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is browser-local. The page starts empty; users upload an advertising CSV and a CRM CSV. Synthetic fixtures are included for reproducible tests.
+A marketing intelligence prototype built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is browser-local. The page starts empty; users can upload an advertising CSV and a CRM CSV or try clearly labeled synthetic sample data with one click.
 
 ## Run
 
@@ -36,6 +36,37 @@ Combine exports of the same kind before importing; record IDs and campaign IDs m
 - Currency is detected from column values, amount headers, and symbols. Without evidence it defaults to USD with a warning. Mixed currencies require selecting a reporting currency; other currencies are quarantined, never converted.
 - Limits: 5 MB, 25,000 rows, 100 columns per file; 2,000 characters per cell. Amounts have up to two decimal places and a bounded magnitude; unsafe totals fail rather than lose precision.
 
+## Sample data
+
+The public app includes **Try sample data / Carregar dados de exemplo** as a secondary option below the real-file upload cards. It creates `sample-advertising.csv` and `sample-crm.csv` in memory and uses the same file decoder, detector, import submission and deterministic processing pipeline as uploaded files. No sample fetch, backend call or LLM is needed. **Clear data** removes the samples and results; choosing real replacement files returns the dashboard label to **Your data** after analysis.
+
+`lib/sample-data.js` reproducibly generates seven fictional campaigns using fixed daily media-cost and opportunity-value formulas, fixed September 2026 dates, and seeded row shuffles. It contains no real people, customers, businesses, emails or identifiers. No dashboard values or decisions are supplied by the generator. These records support product demonstration and regression tests, not claims about business performance.
+
+The advertising CSV has 172 comma-delimited rows (168 daily campaign rows plus four exact duplicates), with MM/DD/YYYY dates. The CRM CSV has 202 semicolon-delimited rows (196 unique deals plus six duplicates), with DD-MM-YYYY dates. Both contain enough file-level evidence for automatic date detection and use USD only. Optional campaign IDs and some closed-lost amounts are blank; contributing won/open amounts are present. Supported stages are Closed Won, Closed Lost, Proposal, Negotiation and Open.
+
+Thirty `Retargeting_CartAbandon` records have no campaign ID and reconcile to `Retargeting - Cart Abandoners` through the existing equivalent-token rule. Four Summer Promo records use case/punctuation-normalized name fallback. Another 158 CRM records match exact campaign IDs. Four records remain unmatched: two reference an absent fictional campaign and two have explicit conflicting IDs despite matching names. Explicit IDs are never silently overridden.
+
+Stable results calculated by `analyze`, with no mapping overrides:
+
+| Metric | Expected result |
+| --- | ---: |
+| Imported rows | 374 (172 ads + 202 CRM) |
+| Accepted unique advertising / CRM rows | 168 / 196 |
+| Duplicates removed | 10 |
+| Quarantined rows | 0 |
+| Matched / unmatched CRM records | 192 / 4 |
+| Campaign match rate | 192 / 196 × 100 = 97.95918367346938% |
+| Total spend | $32,264.25 |
+| Attributed closed-won revenue | $87,400.00 |
+| Open pipeline value | $114,925.00 |
+| Matched closed-won / open records | 52 / 78 |
+| CAC | $32,264.25 / 52 = $620.4663461538462 |
+| ROAS | $87,400 / $32,264.25 = 2.70888057215029× |
+
+**Decision-rule design choice:** the existing global quality gate gives all seven campaigns **Review data** while any record is unmatched. This safeguard is unchanged. Strong/acceptable/poor/low-evidence performance is visible in the revenue, ROAS and closed-won counts. Tests remove only the four unmatched records and rerun the same pipeline to verify the underlying outcomes: Q3 Brand Search and Retargeting → Scale; Summer Promo and LinkedIn ABM → Maintain; Prospecting → Optimize; Awareness and Webinar → Gather data. This clean comparison is a test, not a second dashboard mode or a bypass of the public review state.
+
+Tests assert exact counts and integer-cent totals; ratios are asserted using their exact numerator/denominator expressions. Browser coverage checks one-click loading offline in EN/PT, no network requests or AI controls, clear/reset, mobile layout, and replacement with user files. The older `lib/demo.js` remains an independent existing test fixture.
+
 ## Deterministic processing
 
 `lib/import-format.js` handles format and field inference. `lib/pipeline.js` implements schema validation → normalization → deduplication → reconciliation → canonical dataset → quality evaluation → KPIs → decision rules → dashboard model. No LLM participates in these steps.
@@ -59,22 +90,23 @@ Campaign reconciliation uses exact IDs. Only CRM records without campaign IDs ca
 
 The dashboard is an all-imported-data snapshot. Dates describe the accepted ad rows; no fake previous-period comparisons are shown. It does not infer cross-source attribution, multi-touch attribution, FX rates, timezone alignment, sales-cycle lag, or profit.
 
-## Optional LLM explanation
+## Public / private explanation boundary
 
-Without configuration, the bottom panel is explicitly labeled **Rule-based preview**. It does not impersonate an AI response. Configure a trusted server-side LLM adapter in `.env.local` using `.env.example`:
+The public app always displays a **Rule-based summary**. Its `/api/explain` route unconditionally returns 403 and never reads credentials or calls a provider. The Cloudflare build explicitly disables the AI-generation control. Schema validation, normalization, deduplication, reconciliation, quality checks, KPIs and decisions remain deterministic.
 
-```text
-LLM_EXPLANATION_URL=https://your-service.example/explain
-LLM_EXPLANATION_TOKEN=your-server-side-token
-```
+An optional explanation layer is available only through the separate private local launcher below. The generic adapter in `lib/explanation.js` is not imported by the public API route. No private endpoints, credentials or prompts are shipped as portfolio assets.
 
-The adapter contract is `POST { instructions, facts }` → `{ text: string }`. Connect your preferred LLM behind that adapter. Keys stay server-side. Clicking Generate sends source CSVs to this application's server for independent recomputation; only anonymous aggregate metrics and fixed decision labels are forwarded to the external adapter. Campaign names, IDs, emails, and raw cells are not forwarded. The explanation is rendered as plain text and cannot update KPIs or decisions. Requests time out after 20 seconds. Missing configuration and service failure leave calculations usable.
+## Local ChatGPT connection
 
-The prototype binds to loopback locally. Add authentication, durable rate limits, and deployment-specific access controls before exposing the paid explanation route on a public network. No database or live advertising/CRM connector is configured. Reloading clears uploaded data and results; the selected English/Portuguese language preference persists.
+With the official Codex CLI signed in using `codex login`, run `npm run dev:chatgpt` and open http://127.0.0.1:3002. Generate AI summary uses your existing ChatGPT/Codex subscription allowance. It sends anonymous, recomputed aggregate facts to OpenAI. Raw rows and campaign names are excluded. No credentials are copied into the app.
+
+This opt-in launcher binds only to loopback, requires matching localhost Origin/Host, permits one summary at a time, and runs Codex with an empty temporary working directory, read-only sandbox, ephemeral sessions, and user configuration/plugins/shell/browser tools disabled. The existing 20-second explanation timeout applies. If necessary, set `PIPELINE_CODEX_BIN` to the official Codex executable path. The standard dev server and Cloudflare deployment do not import this adapter. Do not expose this launcher through a tunnel.
+
+Official references: [Codex authentication](https://learn.chatgpt.com/docs/auth) and [non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
 
 ## Verification
 
-Node tests cover duplicate replay, conflicting CRM versions, order invariance, unmatched IDs, normalized and ambiguous names, dimensions, zero denominators, precise amounts, currencies, malformed CSV, custom mappings, schema errors, row/cell limits, formula/prototype/prompt injection, safe CSV exports, fixed decision thresholds, and LLM boundary/failure behavior. Browser tests cover import, filtering, navigation, language switching, honest AI fallback, and mobile overflow.
+Node tests cover duplicate replay, conflicting CRM versions, order invariance, unmatched IDs, normalized and ambiguous names, dimensions, zero denominators, precise amounts, currencies, malformed CSV, custom mappings, schema errors, row/cell limits, formula/prototype/prompt injection, safe CSV exports, fixed decision thresholds, and LLM boundary/failure behavior. Browser tests cover import, filtering, navigation, language switching, honest rule-based public summaries, and mobile overflow.
 
 Framework configuration follows the official [Next.js installation guide](https://nextjs.org/docs/app/getting-started/installation) and [Tailwind CSS PostCSS setup](https://tailwindcss.com/docs/installation/framework-guides/nextjs).
 
@@ -86,4 +118,4 @@ The original Next.js development commands remain available. Cloudflare uses the 
 
 Use Node.js 22.12 or newer (the initial deployment used Node 24). Run `npm run deploy:cloudflare` with Wrangler authenticated to the configured account. `npm run build:cloudflare` builds without publishing; `npx wrangler deploy --dry-run` checks packaging. The generated Wrangler config is under `dist/server` and should not be edited manually.
 
-Run `node scripts/deployment-smoke.mjs https://tiagomf.com` to verify the live empty state, imports, metrics, language toggle, assets and API routing using small synthetic records. The explanation service remains optional and requires `LLM_EXPLANATION_URL` and, if needed, a secret `LLM_EXPLANATION_TOKEN`; no external AI service is configured by this deployment.
+Run `node scripts/deployment-smoke.mjs https://tiagomf.com` to verify the live empty state, imports, metrics, language toggle, assets and API routing using small synthetic records. The public explanation endpoint must return 403, even when a provider configuration exists. Private explanation is intentionally unavailable in this deployment.

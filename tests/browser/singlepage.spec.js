@@ -26,8 +26,9 @@ test('empty start requires uploads before results, filters and AI summary', asyn
   await page.getByLabel('Filter decision').selectOption('Optimize');
   await expect(page.locator('.campaign-panel tbody tr')).toHaveCount(1);
   await page.getByLabel('Filter decision').selectOption('All decisions');
-  await page.getByRole('button', { name: 'Generate AI summary' }).click();
-  await expect(page.locator('.ai-error')).toContainText('not configured');
+  await expect(page.getByRole('button', { name: 'Generate AI summary' })).toHaveCount(0);
+  await expect(page.locator('#summary')).toContainText('RULE-BASED SUMMARY');
+  await expect(page.locator('#summary')).toContainText('does not send data to external AI services');
   await page.goto('/'); await expect(page.locator('.metric-value')).toHaveCount(0); await page.screenshot({ path: 'test-results/onepage-desktop.png', fullPage: true });
 });
 
@@ -105,7 +106,7 @@ test('mobile page has no overflow and imported HTML stays text', async ({ page }
 
 test('explanation API rejects cross-origin and malformed requests', async ({ request }) => {
   expect((await request.post('/api/explain', { data: {} })).status()).toBe(403);
-  expect((await request.post('/api/explain', { headers: { origin: 'http://127.0.0.1:3000' }, data: {} })).status()).toBe(400);
+  expect((await request.post('/api/explain', { headers: { origin: 'http://127.0.0.1:3000' }, data: {} })).status()).toBe(403);
 });
 
 test('ID-less CRM detects revenue, removes duplicates and computes KPIs', async ({ page }) => {
