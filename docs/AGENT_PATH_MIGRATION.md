@@ -47,8 +47,9 @@ This document defines canonical repository locations, path migrations, and opera
 
 - **Install dependencies**: `npm install` (requires Node.js >=22.12.0)
 - **Run unit tests**: `npm test` (uses Node.js test runner against `tests/*.test.js`)
-- **Run browser tests**: `npx playwright test` (application browser suites)
-- **Run portfolio browser tests**: `npm run test:portfolio` (portfolio preview suite against port 3100)
+- **Run application browser tests**: `npx playwright test` or `npm run test:browser` (uses default `playwright.config.js`, project `app`, against `http://127.0.0.1:3000`; portfolio tests are excluded by default)
+- **Run portfolio browser tests**: `npm run test:portfolio` (uses `playwright.portfolio.config.js`, project `portfolio`, targeting `http://127.0.0.1:3100`; automatically boots `node portfolio/preview.mjs` or connects to port 3100)
+- **Portfolio preview server**: `node portfolio/preview.mjs` (starts local preview server for `portfolio/site/` at `http://127.0.0.1:3100`)
 - **Development server**: `npm run dev` (starts Next.js at `http://127.0.0.1:3000`)
 - **Production Next.js build**: `npm run build`
 - **Cloudflare Worker build**: `npm run build:cloudflare` (runs `vite build` via vinext)
