@@ -1,104 +1,164 @@
 # Pipeline Pulse
 
+**Marketing & CRM data reconciliation for reliable performance decisions.**
+
 A deterministic marketing data reconciliation and performance intelligence application built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is entirely browser-local and deterministic. The application reconciles paid advertising spend with CRM opportunity pipelines to calculate verified CAC, ROAS, and pipeline metrics.
+
+Pipeline Pulse is a portfolio prototype for a common Marketing Operations problem: advertising spend and CRM outcomes often live in separate exports, with inconsistent names, duplicated rows, missing identifiers, mixed formats, and data-quality issues that make downstream KPIs unreliable.
+
+The application takes an advertising CSV and a CRM CSV, validates and reconciles them, exposes data-quality problems, and produces deterministic metrics and decision signals.
 
 For architecture and agent guidance, see [System Architecture](docs/ARCHITECTURE.md) and [Agent Path Migration Guide](docs/AGENT_PATH_MIGRATION.md).
 
-## Run
+**Live demo:** https://tiagomf.com/pipeline  
+**Case study:** https://tiagomf.com/pipeline-pulse
 
-Requires Node.js 22.12 or newer.
+> **The system calculates. AI explains.**
 
-```sh
-npm install
-npm run dev
-```
+---
 
-Open http://127.0.0.1:3000. For production, run `npm run build` then `npm start`. The app includes an optional server-side explanation route. A separate vinext build targets Cloudflare Workers; see deployment instructions below.
+## Why I built it
 
-```sh
-npm test
-npx playwright test
-```
+A dashboard is only as trustworthy as the data feeding it.
 
-## Import
+Pipeline Pulse focuses on the operational layer before reporting:
 
-Everything stays on one page: inline imports, KPI cards, reconciliation stats, campaign charts and decisions, expandable diagnostics, and the summary at the bottom. The top navigation scrolls between sections. **Clear data** removes uploads and results.
+- detect and validate incoming CSV structures;
+- normalize inconsistent values and formats;
+- remove replayed duplicates without collapsing legitimate dimensions;
+- reconcile CRM records to advertising campaigns;
+- quarantine malformed or ambiguous data instead of guessing;
+- calculate KPIs from the accepted canonical dataset;
+- apply explicit decision rules;
+- optionally generate an executive explanation from already-computed results.
 
-Use the inline upload cards to supply one advertising CSV and one CRM CSV. Detection runs immediately and shows the selected spend, ID, revenue, and campaign columns. Open **Detection settings** for column previews, date order, currency, and custom stage meanings. Failed imports preserve the current results.
+The goal is not to simulate a full attribution platform. It is to show how a small internal tool can turn fragmented exports into a traceable, reviewable decision workflow.
 
-The detector combines normalized multilingual header aliases, header meaning, column-value profiles, and unambiguous campaign-value overlap across the two files. It can detect nonstandard CRM headers from email/UUID identifiers, monetary values, and known stage values. Unknown or equally plausible fields remain an explicit inline choice. Format detection cannot invent absent revenue, stable IDs, or attribution data.
+---
 
-Combine exports of the same kind before importing; record IDs and campaign IDs must be globally unique within each combined source. Use exports covering the same business period and attribution model.
+## Try it without your own files
 
-- Ads: campaign ID or name, spend. Optional date, currency, ad ID, and additional dimensions. Google API `cost_micros` values are converted to currency units.
-- CRM: campaign ID or name and stage. Record IDs are optional; without an ID, exact normalized row contents are used for deduplication, preserving rows with different names or other fields. Amount detection works independently of IDs. A deal/opportunity ID, when present, takes precedence over a contact ID. Missing amount columns or blank amounts produce unavailable affected revenue/ROAS/pipeline metrics, while record counts and CAC still work.
-- Comma, semicolon, tab, and pipe delimiters; quoted/multiline fields; `sep=` declarations; UTF-8, UTF-16 LE/BE and Windows-1252; unsorted rows; common report preambles; and wholly blank trailing columns are handled. Repeated header records are quarantined.
-- Numbers default to automatic parsing per value: decimal comma/point, currency prefixes/suffixes, spaces, and apostrophe grouping. A sole separator followed by three digits means thousands, not three decimal places. Explicit format overrides are available.
-- Dates accept ISO dates/timestamps, year-first slashes, day-first/month-first numeric dates, English/Portuguese month names, and Excel serial dates. File-level evidence resolves day/month order. Ambiguous dates require an explicit choice; impossible dates remain quarantined.
-- Currency is detected from column values, amount headers, and symbols. Without evidence it defaults to USD with a warning. Mixed currencies require selecting a reporting currency; other currencies are quarantined, never converted.
-- Limits: 5 MB, 25,000 rows, 100 columns per file; 2,000 characters per cell. Amounts have up to two decimal places and a bounded magnitude; unsafe totals fail rather than lose precision.
+The public demo includes **synthetic sample data** so the full workflow can be evaluated without uploading real business data.
 
-## Sample data
+Use **Try sample data / Carregar dados de exemplo** in the application.
 
-The public app includes **Try sample data / Carregar dados de exemplo** as a secondary option below the real-file upload cards. It creates `sample-advertising.csv` and `sample-crm.csv` in memory and uses the same file decoder, detector, import submission and deterministic processing pipeline as uploaded files. No sample fetch, backend call or LLM is needed. **Clear data** removes the samples and results; choosing real replacement files returns the dashboard label to **Your data** after analysis.
+The current fixture contains six campaigns and deliberately includes duplicate rows so the same validation, deduplication, reconciliation, KPI, and decision pipeline is exercised.
 
-`lib/sample-data.js` reproducibly generates seven fictional campaigns using fixed daily media-cost and opportunity-value formulas, fixed September 2026 dates, and seeded row shuffles. It contains no real people, customers, businesses, emails or identifiers. No dashboard values or decisions are supplied by the generator. These records support product demonstration and regression tests, not claims about business performance.
-
-The advertising CSV has 172 comma-delimited rows (168 daily campaign rows plus four exact duplicates), with MM/DD/YYYY dates. The CRM CSV has 202 semicolon-delimited rows (196 unique deals plus six duplicates), with DD-MM-YYYY dates. Both contain enough file-level evidence for automatic date detection and use USD only. Optional campaign IDs and some closed-lost amounts are blank; contributing won/open amounts are present. Supported stages are Closed Won, Closed Lost, Proposal, Negotiation and Open.
-
-Thirty `Retargeting_CartAbandon` records have no campaign ID and reconcile to `Retargeting - Cart Abandoners` through the existing equivalent-token rule. Four Summer Promo records use case/punctuation-normalized name fallback. Another 158 CRM records match exact campaign IDs. Four records remain unmatched: two reference an absent fictional campaign and two have explicit conflicting IDs despite matching names. Explicit IDs are never silently overridden.
-
-Stable results calculated by `analyze`, with no mapping overrides:
+Expected aggregate results from the synthetic fixture:
 
 | Metric | Expected result |
 | --- | ---: |
-| Imported rows | 374 (172 ads + 202 CRM) |
-| Accepted unique advertising / CRM rows | 168 / 196 |
-| Duplicates removed | 10 |
-| Quarantined rows | 0 |
-| Matched / unmatched CRM records | 192 / 4 |
-| Campaign match rate | 192 / 196 × 100 = 97.95918367346938% |
-| Total spend | $32,264.25 |
-| Attributed closed-won revenue | $87,400.00 |
-| Open pipeline value | $114,925.00 |
-| Matched closed-won / open records | 52 / 78 |
-| CAC | $32,264.25 / 52 = $620.4663461538462 |
-| ROAS | $87,400 / $32,264.25 = 2.70888057215029× |
+| Ad spend | $46,800 |
+| Closed-won revenue | $149,400 |
+| Open pipeline | $232,000 |
+| ROAS | 3.19× |
+| Closed-won records | 67 |
+| Duplicates removed | 14 |
 
-**Decision-rule design choice:** the existing global quality gate gives all seven campaigns **Review data** while any record is unmatched. This safeguard is unchanged. Strong/acceptable/poor/low-evidence performance is visible in the revenue, ROAS and closed-won counts. Tests remove only the four unmatched records and rerun the same pipeline to verify the underlying outcomes: Q3 Brand Search and Retargeting → Scale; Summer Promo and LinkedIn ABM → Maintain; Prospecting → Optimize; Awareness and Webinar → Gather data. This clean comparison is a test, not a second dashboard mode or a bypass of the public review state.
+The fixture is processed by the real analysis path; the dashboard values are not hard-coded.
 
-Tests assert exact counts and integer-cent totals; ratios are asserted using their exact numerator/denominator expressions. Browser coverage checks one-click loading offline in EN/PT, no network requests or AI controls, clear/reset, mobile layout, and replacement with user files. The older `lib/demo.js` remains an independent existing test fixture.
+---
 
-## Deterministic processing
+## Processing pipeline
 
-`lib/import-format.js` handles format and field inference. `lib/pipeline.js` implements schema validation → normalization → deduplication → reconciliation → canonical dataset → quality evaluation → KPIs → decision rules → dashboard model. No LLM participates in these steps.
+```mermaid
+flowchart LR
+    A[Advertising CSV] --> C[Schema & format detection]
+    B[CRM CSV] --> C
+    C --> D[Validation]
+    D --> E[Normalization]
+    E --> F[Deduplication]
+    F --> G[Campaign reconciliation]
+    G --> H[Canonical dataset]
+    H --> I[Data-quality evaluation]
+    I --> J[Deterministic KPIs]
+    J --> K[Decision rules]
+    K --> L[Dashboard]
+    L --> M[Optional LLM explanation]
+```
 
-Identical normalized advertising rows are deduplicated including all additional source dimensions, so separate devices, ad groups, and days are preserved. Without source transaction IDs, two genuinely distinct but identical rows cannot be distinguished; export at a documented grain. CRM IDs count once. Conflicting versions of a CRM ID are all quarantined rather than selecting an arbitrary winner. Unknown/ambiguous stages (including bare `Closed`), negative or malformed amounts, impossible dates, mixed currencies, ragged rows, and executable spreadsheet cells are quarantined.
+The deterministic pipeline lives primarily in:
 
-Campaign reconciliation uses exact IDs. Only CRM records without campaign IDs can fall back to a unique normalized name. Normalization removes punctuation, folds case, and normalizes Unicode. A unique set of equivalent name tokens also handles reordered words, camel case, percent notation, and abandon/abandoner variations. Years, regions and audience sizes remain significant. Name collisions are ambiguous and never guessed. Explicit mismatched IDs never fall back to names. IDs must refer to the same shared campaign identifier; a Salesforce internal campaign ID is not assumed to equal a Google Ads ID. Map these identifiers before importing when systems use different IDs. Unmatched CRM records remain visible in Data quality and are excluded from attributed KPIs.
+- `lib/import-format.js` — delimiter, encoding, field, date, currency, and format inference;
+- `lib/pipeline.js` — validation, normalization, deduplication, reconciliation, KPIs, quality checks, and decision rules;
+- `lib/demo.js` — reproducible synthetic sample data;
+- `lib/explanation.js` — optional server-side explanation boundary.
 
-### Definitions
+No LLM participates in validation, reconciliation, KPI calculation, or decision classification.
 
-- **Total spend:** all accepted advertising rows, calculated in integer cents.
-- **CAC:** total spend / matched closed-won record count. Zero closed-won records → unavailable. This is record-based, not a cross-deal unique-person count.
-- **ROAS:** matched closed-won revenue / total spend. Zero spend → unavailable.
-- **Open pipeline:** amounts of matched open opportunities; excludes won and lost. No matched open opportunities or missing contributing amounts makes this metric unavailable; explicit zero amounts remain zero.
-- **Match rate:** matched CRM records / accepted unique CRM records.
-- **Scale:** ≥ 3 closed-won records, positive spend, ROAS ≥ 3.
-- **Maintain:** same evidence floor, ROAS ≥ 1 and < 3.
-- **Optimize:** same evidence floor, ROAS < 1.
-- **Gather data:** evidence floor not met.
-- **Review data:** any unmatched or quarantined record pauses all recommendations.
+---
 
-The dashboard is an all-imported-data snapshot. Dates describe the accepted ad rows; no fake previous-period comparisons are shown. It does not infer cross-source attribution, multi-touch attribution, FX rates, timezone alignment, sales-cycle lag, or profit.
+## Reconciliation rules
+
+Pipeline Pulse is intentionally conservative.
+
+1. **Exact campaign IDs are preferred.**
+2. A CRM record with no campaign ID may fall back to a **unique normalized campaign name**.
+3. Name normalization handles case, punctuation, Unicode differences, word ordering, camel case, percent notation, and a limited set of equivalent tokens.
+4. If a normalized name maps to multiple campaigns, the record remains **ambiguous**.
+5. If an explicit CRM campaign ID conflicts with the advertising ID, the system **does not fall back to the name**.
+6. Unmatched and quarantined records remain visible in Data Quality and are excluded from attributed metrics.
+
+The application favors a visible unresolved record over a confident-looking but unsupported match.
+
+---
+
+## Deterministic metrics
+
+The dashboard calculates:
+
+- **Total ad spend** — accepted advertising rows;
+- **CAC** — accepted ad spend / matched closed-won CRM records;
+- **ROAS** — matched closed-won revenue / accepted ad spend;
+- **Open pipeline** — matched open-opportunity amounts;
+- **Match rate** — matched CRM records / accepted unique CRM records.
+
+Amounts are handled with bounded precision, invalid values are rejected, and zero denominators return unavailable metrics rather than `Infinity` or fabricated zeros.
+
+---
+
+## Decision rules
+
+Recommendations are fixed business rules, not model predictions.
+
+| Decision | Rule |
+| --- | --- |
+| **Scale** | ≥ 3 closed-won records, positive spend, ROAS ≥ 3 |
+| **Maintain** | Same evidence floor, ROAS ≥ 1 and < 3 |
+| **Optimize** | Same evidence floor, ROAS < 1 |
+| **Gather data** | Minimum evidence not met |
+| **Review data** | Any unmatched or quarantined record pauses recommendations |
+
+Because the thresholds are explicit, the same accepted dataset always produces the same result.
+
+---
+
+## Data-quality behavior
+
+Examples of conditions that are surfaced rather than silently repaired include:
+
+- duplicate and conflicting CRM IDs;
+- ambiguous campaign names;
+- explicit mismatched campaign IDs;
+- malformed or impossible dates;
+- unknown stages;
+- negative or malformed monetary values;
+- mixed currencies without a selected reporting currency;
+- repeated headers and ragged rows;
+- executable spreadsheet cells;
+- resource-limit violations.
+
+The quality report keeps these issues inspectable and separates them from accepted records.
+
+---
 
 ## Public / private explanation boundary
 
-The public app always displays a **Rule-based summary**. Its `/api/explain` route unconditionally returns 403 and never reads credentials or calls a provider. The Cloudflare build explicitly disables the AI-generation control. Schema validation, normalization, deduplication, reconciliation, quality checks, KPIs and decisions remain deterministic.
+The public app always displays a **Rule-based preview**. Its `/api/explain` route unconditionally returns 403 and never reads credentials or calls a provider. The Cloudflare build explicitly disables the AI-generation control. Schema validation, normalization, deduplication, reconciliation, quality checks, KPIs and decisions remain deterministic.
 
 An optional explanation layer is available only through the separate private local launcher below. The generic adapter in `lib/explanation.js` is not imported by the public API route. No private endpoints, credentials or prompts are shipped as portfolio assets.
 
-## Local ChatGPT connection
+### Local ChatGPT connection
 
 With the official Codex CLI signed in using `codex login`, run `npm run dev:chatgpt` and open http://127.0.0.1:3002. Generate AI summary uses your existing ChatGPT/Codex subscription allowance. It sends anonymous, recomputed aggregate facts to OpenAI. Raw rows and campaign names are excluded. No credentials are copied into the app.
 
@@ -106,9 +166,103 @@ This opt-in launcher binds only to loopback, requires matching localhost Origin/
 
 Official references: [Codex authentication](https://learn.chatgpt.com/docs/auth) and [non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
 
-## Verification
+---
 
-Node tests cover duplicate replay, conflicting CRM versions, order invariance, unmatched IDs, normalized and ambiguous names, dimensions, zero denominators, precise amounts, currencies, malformed CSV, custom mappings, schema errors, row/cell limits, formula/prototype/prompt injection, safe CSV exports, fixed decision thresholds, and LLM boundary/failure behavior.
+## Supported imports
+
+The import layer handles, among other cases:
+
+- comma, semicolon, tab, and pipe delimiters;
+- quoted and multiline fields;
+- common export preambles;
+- UTF-8, UTF-16 LE/BE, and Windows-1252;
+- decimal comma or decimal point;
+- currency prefixes and suffixes;
+- ISO, year-first, day-first/month-first, named-month, and Excel serial dates;
+- optional CRM record IDs;
+- nonstandard field names through detection or manual mapping.
+
+Current file limits are 5 MB, 25,000 rows, 100 columns, and 2,000 characters per cell.
+
+---
+
+## Tech stack
+
+- **Next.js 16**
+- **React 19**
+- **JavaScript / Node.js**
+- **Tailwind CSS 4**
+- **Papa Parse**
+- **Node test runner**
+- **Playwright**
+- **Vite / vinext**
+- **Cloudflare Workers**
+
+CSV processing is browser-local. The optional explanation route is server-side.
+
+---
+
+## Run locally
+
+Requires **Node.js 22.12+**.
+
+```bash
+npm install
+npm run dev
+```
+
+Open:
+
+```text
+http://127.0.0.1:3000
+```
+
+Production build:
+
+```bash
+npm run build
+npm start
+```
+
+Run the Node test suite:
+
+```bash
+npm test
+```
+
+Run browser tests:
+
+```bash
+npx playwright test
+```
+
+Cloudflare build:
+
+```bash
+npm run build:cloudflare
+```
+
+---
+
+## Testing & test separation
+
+The repository includes deterministic tests for cases such as:
+
+- duplicate replay;
+- conflicting CRM versions;
+- order invariance;
+- unmatched and mismatched IDs;
+- normalized and ambiguous names;
+- zero denominators;
+- mixed currencies;
+- malformed CSV;
+- custom mappings;
+- row and cell limits;
+- formula/prototype/XSS-style inputs;
+- fixed decision thresholds;
+- safe CSV export;
+- optional LLM boundary and failure behavior;
+- reproducible sample-data totals.
 
 ### Test execution & configuration separation
 
@@ -116,7 +270,7 @@ Node tests cover duplicate replay, conflicting CRM versions, order invariance, u
 - **Application browser tests:** `npx playwright test` (or `npm run test:browser`) uses default [`playwright.config.js`](playwright.config.js) (`project: app`) targeting `http://127.0.0.1:3000`. Portfolio presentation specs are excluded by default via `testIgnore`.
 - **Portfolio presentation tests:** `npm run test:portfolio` uses dedicated [`playwright.portfolio.config.js`](playwright.portfolio.config.js) (`project: portfolio`). It targets `http://127.0.0.1:3100` and automatically starts the tracked generic preview script (`node portfolio/preview.mjs`) via Playwright's `webServer` lifecycle. Alternatively, set `PORTFOLIO_BASE_URL` to test directly against an existing deployment (e.g. `PORTFOLIO_BASE_URL=https://tiagomf.com npm run test:portfolio`). See [`portfolio/README.md`](portfolio/README.md) for details on obtaining external site files.
 
-Framework configuration follows the official [Next.js installation guide](https://nextjs.org/docs/app/getting-started/installation) and [Tailwind CSS PostCSS setup](https://tailwindcss.com/docs/installation/framework-guides/nextjs).
+---
 
 ## Cloudflare deployment
 
@@ -124,6 +278,46 @@ Production: https://tiagomf.com/pipeline
 
 The original Next.js development commands remain available. Cloudflare uses the separate vinext/Vite build, with a `/pipeline` base path and a dedicated `pipeline-pulse` Worker. Only `/pipeline` and `/pipeline/*` routes belong to this Worker; the portfolio homepage remains with its existing Worker.
 
-Use Node.js 22.12 or newer (the initial deployment used Node 24). Run `npm run deploy:cloudflare` with Wrangler authenticated to the configured account. `npm run build:cloudflare` builds without publishing; `npx wrangler deploy --dry-run` checks packaging. The generated Wrangler config is under `dist/server` and should not be edited manually.
+Use Node.js 22.12 or newer. Run `npm run deploy:cloudflare` with Wrangler authenticated to the configured account. `npm run build:cloudflare` builds without publishing; `npx wrangler deploy --dry-run` checks packaging. The generated Wrangler config is under `dist/server` and should not be edited manually.
 
 Run `node scripts/deployment-smoke.mjs https://tiagomf.com` to verify the live empty state, imports, metrics, language toggle, assets and API routing using small synthetic records. The public explanation endpoint must return 403, even when a provider configuration exists. Private explanation is intentionally unavailable in this deployment.
+
+---
+
+## Current scope and limitations
+
+Pipeline Pulse is a **portfolio prototype**, not a production attribution platform.
+
+It currently does not provide:
+
+- a persistent database;
+- live CRM or advertising-platform connectors;
+- multi-touch attribution;
+- automatic FX conversion;
+- inferred timezone alignment;
+- inferred sales-cycle lag;
+- durable user accounts or saved analyses.
+
+Uploaded data and results are cleared on reload.
+
+The prototype assumes that the advertising and CRM exports represent a compatible business period and attribution model.
+
+---
+
+## Project approach
+
+I built Pipeline Pulse as a practical Marketing Operations case study.
+
+My focus was defining the operational problem, data contracts, reconciliation behavior, business rules, acceptance criteria, test scenarios, and release decisions. Implementation was AI-assisted, with deterministic tests and manual validation used to verify the resulting behavior.
+
+The project is meant to demonstrate a broader working pattern:
+
+**find an operational bottleneck → understand the data → define explicit rules → build a reliable internal tool → make the result inspectable.**
+
+---
+
+## Related links
+
+- **Live application:** https://tiagomf.com/pipeline
+- **Case study:** https://tiagomf.com/pipeline-pulse
+- **Portfolio:** https://tiagomf.com
