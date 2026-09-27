@@ -154,17 +154,11 @@ The quality report keeps these issues inspectable and separates them from accept
 
 ## Public / private explanation boundary
 
-The public app always displays a **Rule-based preview**. Its `/api/explain` route unconditionally returns 403 and never reads credentials or calls a provider. The Cloudflare build explicitly disables the AI-generation control. Schema validation, normalization, deduplication, reconciliation, quality checks, KPIs and decisions remain deterministic.
+The public application is entirely deterministic. The interface always displays a **Rule-based preview**. Its `/api/explain` route unconditionally returns HTTP 403 Forbidden and never reads credentials or contacts an external LLM provider. The Cloudflare production deployment explicitly disables generative controls. All schema validation, normalization, deduplication, reconciliation, quality checks, KPIs, and decision rules execute deterministically.
 
-An optional explanation layer is available only through the separate private local launcher below. The generic adapter in `lib/explanation.js` is not imported by the public API route. No private endpoints, credentials or prompts are shipped as portfolio assets.
+Any AI explanation is strictly optional, decoupled, and available only via an opt-in private local development launcher (`npm run dev:chatgpt`). Only validated, recomputed aggregate metrics and fixed decision labels are ever provided to an external model—never raw CSV rows, customer IDs, emails, or campaign identifiers.
 
-### Local ChatGPT connection
-
-With the official Codex CLI signed in using `codex login`, run `npm run dev:chatgpt` and open http://127.0.0.1:3002. Generate AI summary uses your existing ChatGPT/Codex subscription allowance. It sends anonymous, recomputed aggregate facts to OpenAI. Raw rows and campaign names are excluded. No credentials are copied into the app.
-
-This opt-in launcher binds only to loopback, requires matching localhost Origin/Host, permits one summary at a time, and runs Codex with an empty temporary working directory, read-only sandbox, ephemeral sessions, and user configuration/plugins/shell/browser tools disabled. The existing 20-second explanation timeout applies. If necessary, set `PIPELINE_CODEX_BIN` to the official Codex executable path. The standard dev server and Cloudflare deployment do not import this adapter. Do not expose this launcher through a tunnel.
-
-Official references: [Codex authentication](https://learn.chatgpt.com/docs/auth) and [non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
+For full architectural details, sandbox isolation rules, and local setup instructions, see [AI Explanation Architecture & Setup](docs/AI_EXPLANATION.md).
 
 ---
 
@@ -268,7 +262,7 @@ The repository includes deterministic tests for cases such as:
 
 - **Unit tests:** `npm test` runs the Node.js test runner across all deterministic unit suites (`tests/*.test.js`).
 - **Application browser tests:** `npx playwright test` (or `npm run test:browser`) uses default [`playwright.config.js`](playwright.config.js) (`project: app`) targeting `http://127.0.0.1:3000`. Portfolio presentation specs are excluded by default via `testIgnore`.
-- **Portfolio presentation tests:** `npm run test:portfolio` uses dedicated [`playwright.portfolio.config.js`](playwright.portfolio.config.js) (`project: portfolio`). It targets `http://127.0.0.1:3100` and automatically starts the tracked generic preview script (`node portfolio/preview.mjs`) via Playwright's `webServer` lifecycle. Alternatively, set `PORTFOLIO_BASE_URL` to test directly against an existing deployment (e.g. `PORTFOLIO_BASE_URL=https://tiagomf.com npm run test:portfolio`). See [`portfolio/README.md`](portfolio/README.md) for details on obtaining external site files.
+- **Portfolio presentation tests:** `npm run test:portfolio` uses dedicated [`playwright.portfolio.config.js`](playwright.portfolio.config.js) (`project: portfolio`). It targets `http://127.0.0.1:3100` and automatically starts the tracked generic preview script (`node portfolio/preview.mjs`) via Playwright's `webServer` lifecycle. Alternatively, set `PORTFOLIO_BASE_URL` to test directly against an existing deployment (e.g. `PORTFOLIO_BASE_URL=https://tiagomf.com npm run test:portfolio`). See [`portfolio/README.md`](portfolio/README.md) for preview workflows and [`tests/fixtures/portfolio/`](tests/fixtures/portfolio/) for download verification fixtures.
 
 ---
 

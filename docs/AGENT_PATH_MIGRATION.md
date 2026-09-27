@@ -1,7 +1,11 @@
 # Agent Path Migration Guide — Pipeline Pulse
 
 Date: 2026-09-26  
-Branch: `portfolio/restructure`
+Migration branch: `portfolio/restructure` — merged on 2026-09-26  
+Canonical branch: `master`
+
+> [!NOTE]
+> The historical migration branch (`portfolio/restructure`) has been merged into `master` and retired. Agents must work directly on the canonical default branch (`master`) using the canonical paths defined below. Do not search for, checkout, or recreate the retired migration branch.
 
 This document defines canonical repository locations, path migrations, and operational guidelines for AI agents working in this repository.
 
@@ -17,10 +21,10 @@ This document defines canonical repository locations, path migrations, and opera
 | **Sample Data** | `data/sample-exports/` | Synthetic CSV export files for manual download and import testing |
 | **Test Suites** | `tests/` | Node built-in unit tests (`tests/*.test.js`) and Playwright specs (`tests/browser/*.spec.js`) |
 | **Test Fixtures** | `tests/fixtures/` | Input fixtures used directly by automated test suites (`crm-sales.csv`, `media-spend.csv`) |
-| **Architecture & Docs**| `docs/` | System architecture (`ARCHITECTURE.md`) and migration guides (`AGENT_PATH_MIGRATION.md`) |
+| **Architecture & Docs**| `docs/` | System architecture (`ARCHITECTURE.md`), AI explanation boundary (`AI_EXPLANATION.md`), and migration guides (`AGENT_PATH_MIGRATION.md`) |
 | **Tooling & Scripts** | `scripts/` | Local scripts (`local-chatgpt.mjs`, `local-chatgpt-adapter.mjs`, `deployment-smoke.mjs`) |
 | **Portfolio Tooling** | `portfolio/preview.mjs` | Tracked generic preview server for testing portfolio presentation on port 3100 |
-| **Portfolio Assets** | `portfolio/assets/updates/` | Approved candidate portfolio update assets and CV PDFs tracked as browser test fixtures |
+| **Portfolio Fixtures**| `tests/fixtures/portfolio/` | Reference CV PDF fixtures for bilingual portfolio browser verification |
 
 ---
 
@@ -29,7 +33,8 @@ This document defines canonical repository locations, path migrations, and opera
 | Deprecated / Old Path | Canonical New Path | Purpose |
 |---|---|---|
 | `presentation-samples/` | `data/sample-exports/` | Sample advertising & CRM CSV files |
-| `Update 25-09/` | `portfolio/assets/updates/` | Local candidate screenshots and CV PDFs |
+| `Update 25-09/` | `tests/fixtures/portfolio/` | Reference CV PDF test fixtures |
+| `portfolio/assets/` | `tests/fixtures/portfolio/` | Relocated test fixtures |
 
 ---
 
@@ -39,8 +44,9 @@ This document defines canonical repository locations, path migrations, and opera
 > Do NOT create or write new files to:
 > - `presentation-samples/`
 > - `Update 25-09/`
+> - `portfolio/assets/`
 > 
-> All sample data belongs in `data/sample-exports/`. All update assets belong in `portfolio/assets/updates/`.
+> All sample data belongs in `data/sample-exports/`. All test fixtures belong under `tests/fixtures/`.
 
 ---
 

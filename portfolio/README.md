@@ -1,38 +1,48 @@
-# Local portfolio copy
+# External Portfolio Presentation & Preview
 
-The 2026-09-25 hiring-asset update is deployed and verified at https://tiagomf.com. See `UPDATE-2026-09-25.md` for the supplied assets, tests and deployment IDs. The older deployment recorded below is the previous 2026-09-24 release.
+This directory contains lightweight tooling for testing integration with the candidate's personal portfolio website ([`https://tiagomf.com`](https://tiagomf.com)).
 
-- `original/`: unchanged downloads from tiagomf.com, retained for comparison.
-- `site/`: edited static website, including the bilingual Pipeline Pulse case study.
-- `build.mjs`: regenerates the homepage and case study from the original files and bilingual copy.
-- `preview.mjs`: local-only preview server.
+> [!NOTE]
+> The personal portfolio website is maintained and hosted independently. Its source code and presentation assets are **not** part of the Pipeline Pulse application repository.
 
-From the application workspace, run `node portfolio/build.mjs` then `node portfolio/preview.mjs`. Open http://127.0.0.1:3100.
+---
 
-### Repository Status & Automated Testing
+## Tracked Files vs. Local Working Copies
 
-- **Git Tracking Boundary**: The static files under `portfolio/*` (including `site/`) represent local presentation copies and are git-ignored, preserving the candidate's local working copy. Only the generic preview script (`portfolio/preview.mjs`), documentation (`portfolio/README.md`), and approved test fixtures/CVs (`portfolio/assets/updates/`) are tracked in Git.
-- **Obtaining External Site Files**: In a fresh checkout, `portfolio/site/` will not exist initially. To obtain or test the site:
-  1. *From Live Deployment*: Download the static files from the candidate's live portfolio at https://tiagomf.com and place them in `portfolio/site/`.
-  2. *Build from Sources*: Run `node portfolio/build.mjs` (which builds `portfolio/site/` from `portfolio/original/` and updates in `portfolio/assets/updates/`).
-  3. *Use Existing Preview URL*: Run against an existing preview server or live deployment without downloading local files by specifying `PORTFOLIO_BASE_URL`:
-     ```powershell
-     $env:PORTFOLIO_BASE_URL = 'https://tiagomf.com'
-     npm run test:portfolio
-     ```
-- **Preview Server (Port 3100)**: When testing locally, `node portfolio/preview.mjs` serves `portfolio/site/` on `http://127.0.0.1:3100`.
-- **Automated Testing**: Run `npm run test:portfolio`. This uses `playwright.portfolio.config.js` (`project: portfolio`). If `PORTFOLIO_BASE_URL` is omitted, Playwright automatically boots `node portfolio/preview.mjs` on port 3100 (or connects to an already-running instance). The default application test command (`npx playwright test`) excludes portfolio tests via `testIgnore`.
+| File / Path | Git Status | Purpose |
+|---|---|---|
+| `portfolio/preview.mjs` | **Tracked** | Generic Node.js HTTP static server used by automated tests to preview static site files on port 3100 |
+| `portfolio/README.md` | **Tracked** | Documentation for portfolio preview and verification workflows |
+| `portfolio/site/` | **Git-ignored** | Local working copy of the static portfolio website |
 
-The build also runs `update-hiring.mjs` and copies the revised files from `portfolio/assets/updates/`. The supplied PNGs are preserved; run `python portfolio/optimize-assets.py` with Pillow to regenerate lossless WebP delivery copies when those supplied images change. `portfolio/language.js` is the shared language-script source for all three edited pages.
+---
 
-Source links point to https://github.com/lowgraph/pipelinepulse. Set `PIPELINE_SOURCE_URL` before rebuilding only if the repository URL changes.
+## Running Portfolio Verification Tests
 
-The original `marketing-performance.html` URL serves the updated case study as well as the new `pipeline-pulse.html` URL. Existing Silt Strider content, screenshot, CV and contact links are preserved. The homepage places Pipeline Pulse first.
+The test suite in [`tests/browser/portfolio.spec.js`](../tests/browser/portfolio.spec.js) validates the external portfolio presentation (bilingual switching, asset downloads, responsive layouts, and cross-project links).
 
-The supplied copy was cleaned of chat timestamps and corrected to describe record-based CAC, quality-gated recommendations, and the currently optional/unconfigured LLM service.
+### Option 1: Test Against the Live Deployment (Fresh Clone)
 
-Published to https://tiagomf.com on 2026-09-24 using the existing `tiny-meadow-0e19` Cloudflare Worker. Deployment version: `7fe82806-f5fb-4f02-8766-d3815c90f852`.
+In a fresh checkout where no local copy of `portfolio/site/` exists, run tests directly against the live production deployment:
 
-Deploy this portfolio with the project-local Wrangler CLI and `deploy --config portfolio/wrangler.jsonc` after rebuilding. The root app's Wrangler configuration deploys the separate Pipeline Pulse app, not this portfolio.
+```powershell
+$env:PORTFOLIO_BASE_URL = 'https://tiagomf.com'
+npm run test:portfolio
+```
 
-Verified all ten live assets match the local files byte-for-byte, including both new CV PDFs. Verified the language toggle switches the CV download, the contact address is contato@tiagomf.com, and the existing /pipeline app remains reachable.
+### Option 2: Test Against a Local Working Copy
+
+If you have a local working copy of the static portfolio website:
+1. Place the static files in `portfolio/site/` (e.g. `portfolio/site/index.html`, `pipeline-pulse.html`, `silt-strider.html`, etc.).
+2. Run the test command:
+   ```powershell
+   npm run test:portfolio
+   ```
+
+When `PORTFOLIO_BASE_URL` is omitted, Playwright automatically boots `node portfolio/preview.mjs` on `http://127.0.0.1:3100` via its `webServer` lifecycle.
+
+---
+
+## Test Fixture References
+
+The bilingual CV reference files used to assert download integrity during portfolio testing reside under [`tests/fixtures/portfolio/`](../tests/fixtures/portfolio/), completely decoupled from application domain logic.

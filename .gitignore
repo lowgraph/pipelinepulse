@@ -14,9 +14,6 @@ dist/
 portfolio/*
 !portfolio/preview.mjs
 !portfolio/README.md
-!portfolio/assets/
-portfolio/assets/*
-!portfolio/assets/updates/
 .agents/
 CLAUDE.md
 skills-lock.json

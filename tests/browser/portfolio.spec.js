@@ -29,7 +29,7 @@ for (const width of [390, 1440]) {
           await expect(cv).toHaveAttribute('href', `./${name}`);
           const pdf = await page.request.get(`${portfolioBase}/${name}`);
           expect(pdf.status()).toBe(200);
-          expect((await pdf.body()).equals(fs.readFileSync(`portfolio/assets/updates/${name}`))).toBe(true);
+          expect((await pdf.body()).equals(fs.readFileSync(`tests/fixtures/portfolio/${name}`))).toBe(true);
           expect(await page.locator('.project h3').allTextContents()).toEqual(['Pipeline Pulse', 'Silt Strider Tools']);
           await expect(page.locator('.pipeline-preview img')).toHaveAttribute('src', './pipeline-pulse-dashboard.png');
         } else {
