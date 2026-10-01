@@ -1,12 +1,14 @@
 # Pipeline Pulse
 
-**Marketing & CRM data reconciliation for reliable performance decisions.**
+**Independent technical project · AI-assisted development**
 
-A deterministic marketing data reconciliation and performance intelligence application built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is entirely browser-local and deterministic. The application reconciles paid advertising spend with CRM opportunity pipelines to calculate verified CAC, ROAS, and pipeline metrics.
+**Marketing & CRM data reconciliation for deterministic metrics and reviewable decisions.**
 
-Pipeline Pulse is a portfolio prototype for a common Marketing Operations problem: advertising spend and CRM outcomes often live in separate exports, with inconsistent names, duplicated rows, missing identifiers, mixed formats, and data-quality issues that make downstream KPIs unreliable.
+A deterministic marketing data reconciliation and internal tool prototype built with **Next.js 16, React 19, JavaScript / Node.js, Tailwind CSS 4, and PostCSS**. CSV processing is entirely browser-local and deterministic. The application reconciles paid advertising spend with CRM opportunity pipelines to calculate deterministic CAC, ROAS, and pipeline metrics from the accepted reconciled dataset.
 
-The application takes an advertising CSV and a CRM CSV, validates and reconciles them, exposes data-quality problems, and produces deterministic metrics and decision signals.
+Pipeline Pulse is an independent technical project and portfolio prototype addressing a common Marketing Operations problem: advertising spend and CRM outcomes often live in separate exports, with inconsistent names, duplicated rows, missing identifiers, mixed formats, and data-quality issues that make downstream KPIs unreliable.
+
+The application takes an advertising CSV and a CRM CSV, validates and reconciles them, exposes data-quality problems, and produces deterministic metrics and explicit decision classifications. Development is AI-assisted: I define the operational problem, requirements, reconciliation and business rules, test scenarios, acceptance criteria, product behavior, and release decisions, while AI coding tools assist with implementation, iteration, and debugging.
 
 For architecture and agent guidance, see [System Architecture](docs/ARCHITECTURE.md) and [Agent Path Migration Guide](docs/AGENT_PATH_MIGRATION.md).
 
@@ -19,7 +21,7 @@ For architecture and agent guidance, see [System Architecture](docs/ARCHITECTURE
 
 ## Why I built it
 
-A dashboard is only as trustworthy as the data feeding it.
+Reporting is only as sound as the data feeding it.
 
 Pipeline Pulse focuses on the operational layer before reporting:
 
@@ -300,13 +302,13 @@ The prototype assumes that the advertising and CRM exports represent a compatibl
 
 ## Project approach
 
-I built Pipeline Pulse as a practical Marketing Operations case study.
+I developed Pipeline Pulse, with AI-assisted implementation, as an independent technical case study around a Marketing Operations data problem.
 
-My focus was defining the operational problem, data contracts, reconciliation behavior, business rules, acceptance criteria, test scenarios, and release decisions. Implementation was AI-assisted, with deterministic tests and manual validation used to verify the resulting behavior.
+My focus was defining the operational problem, data contracts, reconciliation behavior, business rules, acceptance criteria, test scenarios, UX/product behavior, and release decisions. AI coding tools assisted with implementation, debugging, and iteration, while deterministic tests and manual review were used to validate the resulting behavior.
 
 The project is meant to demonstrate a broader working pattern:
 
-**find an operational bottleneck → understand the data → define explicit rules → build a reliable internal tool → make the result inspectable.**
+**find an operational bottleneck → understand the data → define explicit rules → build a testable internal tool → make the result inspectable.**
 
 ---
 
